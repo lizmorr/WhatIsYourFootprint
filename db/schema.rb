@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150412185146) do
+ActiveRecord::Schema.define(version: 20150412190210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,18 @@ ActiveRecord::Schema.define(version: 20150412185146) do
     t.decimal "conversion_factor", precision: 4, null: false
     t.string  "conversion_units",                null: false
     t.string  "category",                        null: false
+  end
+
+  create_table "usages", force: :cascade do |t|
+    t.integer  "user_id",                        null: false
+    t.integer  "carbon_source_id",               null: false
+    t.decimal  "amount_used",      precision: 2, null: false
+    t.string   "units",                          null: false
+    t.date     "usage_start_date",               null: false
+    t.date     "usage_end_date",                 null: false
+    t.text     "notes"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "users", force: :cascade do |t|
