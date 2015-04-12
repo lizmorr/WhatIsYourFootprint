@@ -6,9 +6,38 @@ feature 'admin adds new carbon sources', %Q{
   So that users have accurate options to select from
 } do
 
-  scenario 'admin succesfully adds a new source'
+  scenario 'admin succesfully adds a new source' do
+    admin = FactoryGirl.create(:admin_user)
+    visit new_user_session_path
+    fill_in 'Email', with: admin.email
+    fill_in 'Password', with: admin.password
+    click_on 'Sign In'
 
-  scenario 'admin enters invalid informatio and new source is not added'
+    visit root_path
+
+    save_and_open_page
+
+    click_on 'Add new carbon sources'
+
+    fill_in 'Source', with: "heating oil"
+    fill_in 'Conversion Factor', with: 0.010213
+    fill_in 'Conversion Units', with: 'tons CO2 / gallon'
+    fill_in 'Category', with: 'Home'
+    fill_in 'Subcategory', with: 'Heating'
+
+    click_on 'Add new source'
+
+    expect(page).to have_content('Heating oil added as carbon source')
+    expect(page).to have_content('Add another source')
+    expect(page).to find_field('Source')
+    expect(page).to find_field('Conversion Factor')
+    expect(page).to find_field('Conversion Units')
+    expect(page).to find_field('Category')
+    expect(page).to find_field('Subcategory')
+  end
+
+
+  scenario 'admin enters invalid information and new source is not added'
 
   scenario 'non-admin user is unable to add new source'
 

@@ -11,16 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150412191824) do
+ActiveRecord::Schema.define(version: 20150412193941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "carbon_sources", force: :cascade do |t|
-    t.string  "text",                            null: false
-    t.decimal "conversion_factor", precision: 4, null: false
+    t.string  "source",                          null: false
+    t.decimal "conversion_factor", precision: 6, null: false
     t.string  "conversion_units",                null: false
     t.string  "category",                        null: false
+    t.string  "subcategory"
   end
 
   create_table "usages", force: :cascade do |t|
