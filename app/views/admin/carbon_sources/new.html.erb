@@ -1,0 +1,22 @@
+<%= form_for [:admin, @carbon_source] do |f| %>
+  <%= f.label :source %>
+  <%= f.text_field :source %>
+
+  <%= f.label :conversion_factor %>
+  <%= f.text_field :conversion_factor %>
+
+  <%= f.label :conversion_units %>
+  <%= f.text_field :conversion_units %>
+
+  <%= f.label :category %>
+  <%= f.select :category,
+      CarbonSource::CATEGORIES,
+      :include_blank => "Please Choose A Category" %>
+
+  <%= f.label :subcategory %>
+  <%= f.select :subcategory,
+      CarbonSource::SUBCATEGORIES,
+      :include_blank => "Please Choose A Subcategory" %>
+
+  <%= f.submit "Add new source"  %>
+<% end %>

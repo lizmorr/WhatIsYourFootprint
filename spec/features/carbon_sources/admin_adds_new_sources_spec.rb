@@ -15,15 +15,15 @@ feature 'admin adds new carbon sources', %Q{
 
     visit root_path
 
-    save_and_open_page
-
     click_on 'Add new carbon sources'
 
+    save_and_open_page
+
     fill_in 'Source', with: "heating oil"
-    fill_in 'Conversion Factor', with: 0.010213
-    fill_in 'Conversion Units', with: 'tons CO2 / gallon'
-    fill_in 'Category', with: 'Home'
-    fill_in 'Subcategory', with: 'Heating'
+    fill_in 'Conversion factor', with: 0.010213
+    fill_in 'Conversion units', with: 'tons CO2 / gallon'
+    select 'Home', from: 'Category'
+    select 'Heating', from: 'Subcategory'
 
     click_on 'Add new source'
 
