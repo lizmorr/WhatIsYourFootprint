@@ -15,9 +15,7 @@ feature 'admin adds new carbon sources', %Q{
 
     visit root_path
 
-    click_on 'Add new carbon sources'
-
-    save_and_open_page
+    click_on 'Admin Home'
 
     fill_in 'Source', with: "heating oil"
     fill_in 'Conversion factor', with: 0.010213
@@ -28,7 +26,7 @@ feature 'admin adds new carbon sources', %Q{
     click_on 'Add new source'
 
     expect(page).to have_content('Heating oil added as carbon source')
-    expect(page).to have_content('Add another source')
+    expect(page).to have_content('Add new carbon source')
     expect(page).to find_field('Source')
     expect(page).to find_field('Conversion Factor')
     expect(page).to find_field('Conversion Units')
