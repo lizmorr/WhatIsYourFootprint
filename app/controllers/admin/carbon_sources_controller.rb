@@ -2,6 +2,7 @@ module Admin
   class CarbonSourcesController < ApplicationController
     def index
       if current_user.try(:admin?)
+        @carbon_sources = CarbonSource.all
         @carbon_source = CarbonSource.new
       else
         redirect_to root_path,
@@ -17,6 +18,21 @@ module Admin
       else
         @errors = @carbon_source.errors.full_messages
         render :index
+      end
+    end
+
+    def edit
+      @carbon_source = CarbonSource.find(params[:id])
+    end
+
+    def update
+      @carbon_source = CarbonSource.find(params[:id])
+      if @carbon_source.update(carbon_source_params)
+        redirect_to admin_carbon_sources_path,
+          notice: "#{@carbon_source.source} updated!"
+      else
+        @errors = @carbon_source.errors.full_messages
+        render :edit
       end
     end
 

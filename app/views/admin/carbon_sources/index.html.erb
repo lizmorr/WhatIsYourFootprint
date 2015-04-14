@@ -1,4 +1,26 @@
 <%= render 'shared/errors' if @errors %>
-<h2>Add New Carbon Source</h2>
 
-<%= render 'new' %>
+<% if @carbon_sources %>
+  <div class="all-sources">
+    <h2>All Sources</h2>
+    <ul>
+      <% @carbon_sources.each do |carbon_source| %>
+        <li>
+          <h2><%= link_to carbon_source.source, carbon_source_path(carbon_source) %><h2>
+            <ul>
+              <li><%= carbon_source.category %></li>
+              <li><%= carbon_source.subcategory %></li>
+              <li>
+                Conversion: <%= "#{carbon_source.conversion_factor} #{carbon_source.conversion_units}" %>
+              </li>
+          <%= link_to "Edit #{carbon_source.source}", edit_admin_carbon_source_path(carbon_source) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div>
+  <h2>Add New Carbon Source</h2>
+  <%= render 'new' %>
+</div>
