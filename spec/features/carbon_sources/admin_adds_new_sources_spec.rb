@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'admin adds new carbon sources', %Q{
+feature 'admin adds new carbon sources', %{
   As an admin
   I want to add new carbon sources
   So that users have accurate options to select from
@@ -11,7 +11,7 @@ feature 'admin adds new carbon sources', %Q{
     sign_in_as(admin)
 
     click_link 'Admin Home'
-    
+
     fill_in 'Source', with: "Heating oil"
     fill_in 'Conversion factor', with: 0.010213
     fill_in 'Conversion units', with: 'tons CO2 / gallon'
@@ -42,10 +42,12 @@ feature 'admin adds new carbon sources', %Q{
 
   scenario 'non-admin user is unable to add new source' do
     user = FactoryGirl.create(:user)
+    sign_in_as(user)
 
     visit admin_carbon_sources_path
 
-    expect(page).to have_content('You are not authorized to access this page! Sorry')
+    expect(page).to have_content('Sorry, you were not authorized ' +
+      'to access that page!')
   end
 
 end
