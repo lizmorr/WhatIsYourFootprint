@@ -10,8 +10,8 @@ feature 'admin adds new carbon sources', %Q{
     admin = FactoryGirl.create(:admin_user)
     sign_in_as(admin)
 
-    visit admin_carbon_sources_path
-
+    click_link 'Admin Home'
+    
     fill_in 'Source', with: "Heating oil"
     fill_in 'Conversion factor', with: 0.010213
     fill_in 'Conversion units', with: 'tons CO2 / gallon'

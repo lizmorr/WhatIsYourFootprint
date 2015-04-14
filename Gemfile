@@ -22,3 +22,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'pry-rails'
 end
+
+group :test do
+  gem 'coveralls', require: false
+end
