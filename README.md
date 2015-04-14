@@ -1,4 +1,6 @@
-![Build Status](https://travis-ci.org/lizmorr/WhatIsYourFootprint.svg?branch=master)](https://travis-ci.org/lizmorr/WhatIsYourFootprint) [![Code Climate](https://codeclimate.com/github/lizmorr/WhatIsYourFootprint.png)](https://codeclimate.com/github/lizmorr/WhatIsYourFootprint) [![Coverage Status](https://coveralls.io/repos/lizmorr/WhatIsYourFootprint/badge.png)](https://coveralls.io/r/lizmorr/WhatIsYourFootprint)
+[![Build Status](https://travis-ci.org/lizmorr/WhatIsYourFootprint.svg?branch=master)](https://travis-ci.org/lizmorr/WhatIsYourFootprint)
+[![Code Climate](https://codeclimate.com/github/lizmorr/WhatIsYourFootprint.png)](https://codeclimate.com/github/lizmorr/WhatIsYourFootprint)
+[![Coverage Status](https://coveralls.io/repos/lizmorr/WhatIsYourFootprint/badge.png)](https://coveralls.io/r/lizmorr/WhatIsYourFootprint)
 
 == README
 
