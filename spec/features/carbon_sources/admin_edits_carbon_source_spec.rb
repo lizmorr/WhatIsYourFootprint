@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'admin adds new carbon sources', %Q{
+feature 'admin adds new carbon sources', %{
   As an admin
   I want to edit new carbon sources
   In case information changes about them
@@ -47,8 +47,7 @@ feature 'admin adds new carbon sources', %Q{
 
     visit edit_admin_carbon_source_path(source)
 
-    expect(page).to have_content('Sorry, you were not authorized to access that page!')
+    expect(page).to have_content('Sorry, you were not authorized to' +
+      'access that page!')
   end
-
-
 end

@@ -35,7 +35,8 @@ module Admin
 
     def update
       @carbon_source = CarbonSource.find(params[:id])
-      if current_user.try(:admin?) && @carbon_source.update(edit_carbon_source_params)
+      if current_user.try(:admin?) &&
+        @carbon_source.update(edit_carbon_source_params)
         redirect_to admin_carbon_sources_path,
           notice: "#{@carbon_source.source} updated!"
       elsif !current_user.try(:admin?)
@@ -58,6 +59,5 @@ module Admin
       params.require(:carbon_source).permit(:conversion_factor,
         :conversion_units, :category, :subcategory)
     end
-
   end
 end

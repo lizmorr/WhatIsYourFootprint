@@ -1,5 +1,5 @@
 class CarbonSourcesController < ApplicationController
   def show
-      @carbon_source = CarbonSource.find(params[:id])
+    @carbon_source = CarbonSource.find(params[:id])
   end
 end
