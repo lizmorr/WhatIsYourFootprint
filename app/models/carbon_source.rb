@@ -1,7 +1,6 @@
 class CarbonSource < ActiveRecord::Base
   CATEGORIES = %w(Home Travel)
-  SUBCATEGORIES = ["Heating", "Electric", "Cooking",
-    "Personal Car", "Company Car"]
+  SUBCATEGORIES = %w(Heating Electric Cooking Car)
 
   validates :source, presence: true
   validates :conversion_factor, presence: true, numericality: {
