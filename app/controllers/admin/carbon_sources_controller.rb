@@ -36,7 +36,7 @@ module Admin
     def update
       @carbon_source = CarbonSource.find(params[:id])
       if current_user.try(:admin?) &&
-        @carbon_source.update(edit_carbon_source_params)
+          @carbon_source.update(edit_carbon_source_params)
         redirect_to admin_carbon_sources_path,
           notice: "#{@carbon_source.source} updated!"
       elsif !current_user.try(:admin?)
