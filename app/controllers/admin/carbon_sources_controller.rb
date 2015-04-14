@@ -6,7 +6,7 @@ module Admin
         @carbon_source = CarbonSource.new
       else
         redirect_to root_path,
-          notice: "Sorry, you were not authorized to access that page!"
+          alert: "Sorry, you were not authorized to access that page!"
       end
     end
 
@@ -17,7 +17,7 @@ module Admin
           notice: "#{@carbon_source.source} added as carbon source"
       elsif !current_user.try(:admin?)
         redirect_to root_path,
-          notice: "Sorry, you were not authorized to access that action!"
+          alert: "Sorry, you were not authorized to access that action!"
       else
         @errors = @carbon_source.errors.full_messages
         render :index
@@ -29,7 +29,7 @@ module Admin
         @carbon_source = CarbonSource.find(params[:id])
       else
         redirect_to root_path,
-          notice: "Sorry, you were not authorized to access that page!"
+          alert: "Sorry, you were not authorized to access that page!"
       end
     end
 
@@ -40,7 +40,7 @@ module Admin
           notice: "#{@carbon_source.source} updated!"
       elsif !current_user.try(:admin?)
         redirect_to root_path,
-          notice: "Sorry, you were not authorized to access that action!"
+          alert: "Sorry, you were not authorized to access that action!"
       else
         @errors = @carbon_source.errors.full_messages
         render :edit
