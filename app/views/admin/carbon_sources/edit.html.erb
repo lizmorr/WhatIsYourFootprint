@@ -1,8 +1,8 @@
 <%= render 'shared/errors' if @errors%>
 
+<h2>Edit <%= @carbon_source.source %></h2>
+
 <%= form_for [:admin, @carbon_source] do |f| %>
-  <%= f.label :source %>
-  <%= f.text_field :source %>
 
   <%= f.label :conversion_factor %>
   <%= f.text_field :conversion_factor %>
