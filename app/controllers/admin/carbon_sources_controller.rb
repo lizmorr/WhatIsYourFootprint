@@ -1,7 +1,12 @@
 module Admin
   class CarbonSourcesController < ApplicationController
     def index
-      @carbon_source = CarbonSource.new
+      if current_user.try(:admin?)
+        @carbon_source = CarbonSource.new
+      else
+        redirect_to root_path,
+          notice: "You are not authorized to access this page! Sorry'"
+      end
     end
 
     def create
