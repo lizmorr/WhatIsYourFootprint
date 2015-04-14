@@ -1,3 +1,6 @@
+<%= render 'shared/errors' if @errors %>
 <p>
-  <%= link_to "Add new carbon sources", new_admin_carbon_source_path %>
+  <% if current_user.try(:admin?) %>
+    <%= link_to "Admin Home", admin_carbon_sources_path %>
+  <% end %>
 </p>

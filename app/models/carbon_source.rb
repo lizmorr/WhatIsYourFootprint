@@ -7,5 +7,5 @@ class CarbonSource < ActiveRecord::Base
   validates :conversion_factor, presence: true, numericality: true
   validates :conversion_units, presence: true
   validates :category, presence: true, inclusion: {in: CATEGORIES}
-  validates :subcategory, inclusion: {in: SUBCATEGORIES}
+  validates :subcategory, inclusion: {in: SUBCATEGORIES}, allow_blank: true
 end

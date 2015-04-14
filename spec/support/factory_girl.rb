@@ -11,4 +11,12 @@ FactoryGirl.define do
     end
   end
 
+  factory :carbon_source do
+    source 'Heating oil'
+    conversion_factor 0.01213
+    conversion_units 'tons CO2 / gallon'
+    category 'Home'
+    subcategory 'Heating'
+  end
+
 end
