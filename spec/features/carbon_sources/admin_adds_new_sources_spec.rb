@@ -46,7 +46,7 @@ feature 'admin adds new carbon sources', %{
 
     visit admin_carbon_sources_path
 
-    expect(page).to have_content('Sorry, you were not authorized' +
+    expect(page).to have_content('Sorry, you were not authorized ' +
       'to access that page!')
   end
 
