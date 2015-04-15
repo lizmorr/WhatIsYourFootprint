@@ -10,15 +10,5 @@
   <%= f.label :conversion_units %>
   <%= f.text_field :conversion_units %>
 
-  <%= f.label :category %>
-  <%= f.select :category,
-      CarbonSource::CATEGORIES,
-      :include_blank => "Please Choose A Category" %>
-
-  <%= f.label :subcategory %>
-  <%= f.select :subcategory,
-      CarbonSource::SUBCATEGORIES,
-      :include_blank => "Please Choose A Subcategory" %>
-
   <%= f.submit "Edit Source"  %>
 <% end %>

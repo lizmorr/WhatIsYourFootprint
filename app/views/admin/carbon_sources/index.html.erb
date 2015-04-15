@@ -8,8 +8,6 @@
         <li>
           <h2><%= link_to carbon_source.source, carbon_source_path(carbon_source) %><h2>
             <ul>
-              <li><%= carbon_source.category %></li>
-              <li><%= carbon_source.subcategory %></li>
               <li>
                 Conversion: <%= "#{carbon_source.conversion_factor} #{carbon_source.conversion_units}" %>
               </li>

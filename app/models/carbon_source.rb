@@ -7,6 +7,4 @@ class CarbonSource < ActiveRecord::Base
     greater_than: 0, message: "must be a positive number"
   }
   validates :conversion_units, presence: true
-  validates :category, presence: true, inclusion: {in: CATEGORIES}
-  validates :subcategory, inclusion: {in: SUBCATEGORIES}, allow_blank: true
 end
