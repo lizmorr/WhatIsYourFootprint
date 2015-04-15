@@ -7,19 +7,11 @@ feature 'user views all potential carbon sources', %{
 } do
 
   scenario 'User can see all sources' do
-    travel_source = FactoryGirl.create(:carbon_source,
-      source: 'Gasoline',
-      category: 'Travel')
+    FactoryGirl.create(:carbon_source, source: 'Gasoline', category: 'Travel')
 
-    home_source1 = FactoryGirl.create(:carbon_source,
-      source: 'Electricity',
-      category: 'Home')
-    home_source2 = FactoryGirl.create(:carbon_source,
-      source: 'Natural gas',
-      category: 'Home')
-    home_source3 = FactoryGirl.create(:carbon_source,
-      source: 'Heating oil',
-      category: 'Home')
+    FactoryGirl.create(:carbon_source, source: 'Electricity', category: 'Home')
+    FactoryGirl.create(:carbon_source, source: 'Natural gas', category: 'Home')
+    FactoryGirl.create(:carbon_source, source: 'Heating oil', category: 'Home')
 
     visit carbon_sources_path
 
