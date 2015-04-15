@@ -1,0 +1,12 @@
+<% CarbonSource::CATEGORIES.each do |category| %>
+  <div class="row" id=<%= "#{category}_index" %>
+    <h2><%= category %></h2>
+    <ul>
+    <% @carbon_sources.each do |carbon_source| %>
+      <% if carbon_source.category == category %>
+        <li><%= link_to carbon_source.source, carbon_source_path(carbon_source) %></li>
+      <% end %>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

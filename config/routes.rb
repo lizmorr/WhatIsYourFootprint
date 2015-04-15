@@ -6,5 +6,5 @@ Rails.application.routes.draw do
     resources :carbon_sources, only: [:index, :create, :new, :edit, :update]
   end
 
-  resources :carbon_sources, only: [:show]
+  resources :carbon_sources, only: [:index, :show]
 end
