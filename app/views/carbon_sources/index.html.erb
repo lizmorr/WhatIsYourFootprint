@@ -1,22 +1,11 @@
-<% CarbonSource::CATEGORIES.each do |category| %>
-  <div class="row" id=<%= "#{category}_index" %>
-    <div class="small-6 columns"
-    <h2><%= category %></h2>
-    <% @carbon_sources.each do |carbon_source| %>
-      <% if carbon_source.category == category %>
-      <div class="row" id=<%= "source_#{carbon_source.id}" %>
-        <h4>
-          <%= link_to carbon_source.source, carbon_source_path(carbon_source) %>
-        </h4>
-        <h5 class="subheader">
-          Subcategory: <%= carbon_source.subcategory if carbon_source.subcategory %>
-        </h5>
-        <h5 class="subheader">
-          Conversion: <%= "#{carbon_source.conversion_factor} " +
-            "#{carbon_source.conversion_units}" %>
-        </h5>
-      </div>
-      <% end %>
-    <% end %>
-  </div>
+<% @carbon_sources.each do |carbon_source| %>
+<div class="row" id=<%= "source_#{carbon_source.id}" %>
+  <h4>
+    <%= link_to carbon_source.source, carbon_source_path(carbon_source) %>
+  </h4>
+  <h5 class="subheader">
+    Conversion: <%= "#{carbon_source.conversion_factor} " +
+      "#{carbon_source.conversion_units}" %>
+  </h5>
+</div>
 <% end %>
