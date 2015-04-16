@@ -1,6 +1,43 @@
 <%= render 'shared/errors' if @errors %>
-<p>
-  <% if current_user.try(:admin?) %>
-    <%= link_to "Admin Home", admin_carbon_sources_path %>
-  <% end %>
-</p>
+
+<div class="row">
+  <div class="large-12 columns">
+    <%= image_tag "grassandtree.jpg", alt:"Pretty outside image" %>
+    <hr>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-4 columns">
+    <h4>What are emissions?</h4>
+    <p>Carbon emission refers to the carbon dioxide that is released into the
+      atmosphere when fossil fuels are burned. Fossil fuels with higher
+      carbon content will have higher emissions. Carbon emissions are a driver
+      of climate change.</p>
+  </div>
+
+  <div class="small-4 columns">
+    <h4>Why track?</h4>
+    <p>Tracking your personal emissions (your carbon footprint) can give you insight
+      into how your actions may have an impact on the environment. There are two
+      kinds of emissions to track: direct and indirect.</p>
+    <p><em>Direct emissions</em> are emissions that created by sources you
+      own/control. For an individual, this would likely be your car or heating
+      your house.</p>
+    <p></em>Indirect emissions</em> are emissions that are created by someone
+      else on your behalf. Emissions that would fall into this are the emissions
+      created by electricity generation or the production of goods made. For
+      the purposes of tracking here, we will consider emissions related to the
+      purchase of electricity.</p>
+  </div>
+
+  <div class="small-4 columns">
+    <h4>Want to learn more?</h4>
+    <ul>
+      <li><%= link_to "EPA information on emissions",
+        "http://www.epa.gov/climatechange/ghgemissions/" %></li>
+      <li> <%= link_to "Wikipedia entry on what a carbon footprint is",
+        "http://en.wikipedia.org/wiki/Carbon_footprint" %></li>
+  </div>
+  <hr>
+</div>

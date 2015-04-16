@@ -1,12 +1,26 @@
 <%= form_for [:admin, @carbon_source] do |f| %>
-  <%= f.label :source %>
-  <%= f.text_field :source %>
+  <div class="row">
+    <div class="small-12 columns">
+      <%= f.label :source %>
+      <%= f.text_field :source %>
+    </div>
+  </div>
 
-  <%= f.label :conversion_factor %>
-  <%= f.text_field :conversion_factor %>
+  <div class="row">
+    <div class="small-6 columns">
+      <%= f.label :conversion_factor %>
+      <%= f.text_field :conversion_factor %>
+    </div>
 
-  <%= f.label :conversion_units %>
-  <%= f.text_field :conversion_units %>
+    <div class="small-6 columns">
+      <%= f.label :conversion_units %>
+      <%= f.text_field :conversion_units %>
+    </div>
+  </div>
 
-  <%= f.submit "Add new source"  %>
+  <div class="row">
+    <div class="small-12 columns">
+      <%= f.submit "Add new source", class: "button secondary" %>
+    </div>
+  </div>
 <% end %>

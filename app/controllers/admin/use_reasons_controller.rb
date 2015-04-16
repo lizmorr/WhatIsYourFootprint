@@ -1,5 +1,15 @@
 module Admin
   class UseReasonsController < ApplicationController
+    def index
+      if current_user.try(:admin?)
+        @use_reasons = UseReason.all
+        @use_reason = UseReason.new
+      else
+        redirect_to root_path,
+          alert: "Sorry, you were not authorized to access that page!"
+      end
+    end
+
     def create
       @use_reason = UseReason.new(use_reason_params)
       if current_user.try(:admin?) && @use_reason.save
@@ -10,8 +20,7 @@ module Admin
           alert: "Sorry, you were not authorized to access that action!"
       else
         @errors = @use_reason.errors.full_messages
-        @carbon_source = CarbonSource.new
-        @carbon_sources = CarbonSource.all
+        @use_reasons = UseReason.all
         render "admin/carbon_sources/index"
       end
     end

@@ -1,0 +1,22 @@
+<%= render 'shared/errors' if @errors %>
+
+<div class="row">
+  <div class="small-4 columns">
+    <h2>Add New Use Reason</h2>
+    <%= render 'new' %>
+  </div>
+
+  <div class="small-8 columns">
+    <h2>Use Reasons</h2>
+    <% if @use_reasons %>
+      <div class="row" id="use_reasons">
+        <div class="small-12 columns">
+          <% @use_reasons.each do |reason| %>
+              <h2 class="subheader"><%= reason.name %></h2>
+              <%= link_to "Edit #{reason.name}", edit_admin_use_reason_path(reason) %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
