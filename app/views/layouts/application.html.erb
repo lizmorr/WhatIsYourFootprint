@@ -6,16 +6,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
-  <nav class="top-bar">
+
+  <nav class="top-bar" data-topbar role="navigation">
     <ul class="title-area">
       <li class="name">
-        <h1><a href="/">CarbonFootprint</a></h1>
+        <h1><%= link_to "What's Your Footprint?", root_path %></h1>
       </li>
     </ul>
 
     <section class="top-bar-section">
       <ul class="right">
+        <li class="has-dropdown" id="admin-home">
+          <% if current_user.try(:admin?) %>
+            <a href="#">Admin</a>
+            <ul class="dropdown">
+              <li><%= link_to "Carbon Sources", admin_carbon_sources_path %></li>
+              <li><%= link_to "Use Reasons", admin_use_reasons_path %></li>
+            </ul>
+          <% end %>
+        </li>
         <%- if current_user -%>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <%- else -%>

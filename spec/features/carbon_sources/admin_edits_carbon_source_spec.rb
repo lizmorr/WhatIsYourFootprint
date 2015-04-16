@@ -11,7 +11,7 @@ feature 'admin edits carbon sources', %{
     sign_in_as(admin)
     source = FactoryGirl.create(:carbon_source)
 
-    click_link 'Admin Home'
+    visit admin_carbon_sources_path
 
     click_link "Edit #{source.source}"
 
@@ -27,7 +27,7 @@ feature 'admin edits carbon sources', %{
     sign_in_as(admin)
     source = FactoryGirl.create(:carbon_source)
 
-    click_link 'Admin Home'
+    visit admin_carbon_sources_path
 
     click_link "Edit #{source.source}"
 

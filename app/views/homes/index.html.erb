@@ -1,6 +1,4 @@
 <%= render 'shared/errors' if @errors %>
 <p>
-  <% if current_user.try(:admin?) %>
-    <%= link_to "Admin Home", admin_carbon_sources_path %>
-  <% end %>
+  What's your carbon footprint?
 </p>

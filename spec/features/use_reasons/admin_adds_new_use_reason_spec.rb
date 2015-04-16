@@ -10,7 +10,7 @@ feature 'admin adds new use reason', %{
     admin = FactoryGirl.create(:admin_user)
     sign_in_as(admin)
 
-    click_link 'Admin Home'
+    visit admin_use_reasons_path
 
     fill_in 'Name', with: "Home"
 
@@ -23,7 +23,7 @@ feature 'admin adds new use reason', %{
     admin = FactoryGirl.create(:admin_user)
     sign_in_as(admin)
 
-    visit admin_carbon_sources_path
+    visit admin_use_reasons_path
 
     click_on 'Add new reason'
 
