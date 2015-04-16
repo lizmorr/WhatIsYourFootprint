@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'admin adds new carbon sources', %{
+feature 'admin edits carbon sources', %{
   As an admin
   I want to edit new carbon sources
   In case information changes about them

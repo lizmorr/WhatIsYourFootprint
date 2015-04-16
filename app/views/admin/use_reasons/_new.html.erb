@@ -1,0 +1,6 @@
+<%= form_for [:admin, @use_reason] do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.submit "Add new reason"  %>
+<% end %>
