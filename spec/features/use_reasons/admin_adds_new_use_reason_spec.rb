@@ -19,7 +19,6 @@ feature 'admin adds new use reason', %{
     expect(page).to have_content('Home added as new use reason')
   end
 
-
   scenario 'admin enters source with missing information and fails' do
     admin = FactoryGirl.create(:admin_user)
     sign_in_as(admin)

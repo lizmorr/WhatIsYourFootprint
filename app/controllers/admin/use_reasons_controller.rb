@@ -18,12 +18,11 @@ module Admin
 
     def edit
       if current_user.try(:admin?)
-        @use_reason = UseReason.find(params[:id])      
+        @use_reason = UseReason.find(params[:id])
       else
         redirect_to root_path,
           alert: "Sorry, you were not authorized to access that page!"
       end
-
     end
 
     def update
@@ -45,6 +44,5 @@ module Admin
     def use_reason_params
       params.require(:use_reason).permit(:name)
     end
-
   end
 end

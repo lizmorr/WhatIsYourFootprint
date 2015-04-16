@@ -27,7 +27,7 @@ feature 'admin edits use reason', %{
   scenario 'Admin edits use reason with invalid information and fails' do
     admin = FactoryGirl.create(:admin_user)
     sign_in_as(admin)
-    source = FactoryGirl.create(:use_reason, name: 'Travel')
+    FactoryGirl.create(:use_reason, name: 'Travel')
 
     click_link 'Admin Home'
 
