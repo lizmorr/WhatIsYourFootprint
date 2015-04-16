@@ -4,6 +4,8 @@ module Admin
       if current_user.try(:admin?)
         @carbon_sources = CarbonSource.all
         @carbon_source = CarbonSource.new
+        @use_reasons = UseReason.all
+        @use_reason = UseReason.new
       else
         redirect_to root_path,
           alert: "Sorry, you were not authorized to access that page!"
@@ -20,6 +22,8 @@ module Admin
           alert: "Sorry, you were not authorized to access that action!"
       else
         @errors = @carbon_source.errors.full_messages
+        @use_reason = UseReason.new
+        @use_reasons = UseReason.all
         render :index
       end
     end

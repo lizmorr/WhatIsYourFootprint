@@ -14,12 +14,12 @@ feature 'admin adds new carbon sources', %{
 
     fill_in 'Source', with: "Heating oil"
     fill_in 'Conversion factor', with: 0.010213
-    fill_in 'Conversion units', with: 'tons CO2 / gallon'
+    fill_in 'Conversion units', with: 'tons CO2/gallon'
 
     click_on 'Add new source'
 
     expect(page).to have_content('Heating oil added as carbon source')
-    expect(page).to have_content('Add New Carbon Source')
+    expect(page).to have_content('Conversion: 0.010213 tons CO2/gallon')
   end
 
 

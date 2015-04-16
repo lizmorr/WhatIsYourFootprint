@@ -1,0 +1,11 @@
+<%= render 'shared/errors' if @errors%>
+
+<h2>Edit Use Reason</h2>
+
+<%= form_for [:admin, @use_reason] do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.submit "Edit Reason"  %>
+<% end %>
