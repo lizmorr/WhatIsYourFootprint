@@ -18,10 +18,10 @@ feature 'user views all potential carbon sources', %{
     visit carbon_sources_path
 
     expect(page).to have_content('Electricity')
+
     expect(page).to have_content('Heating oil')
-    within("#source_#{detail_source.id}") do
-      expect(page).to have_content('Conversion: 0.01213 tons CO2/gallon')
-    end
+    expect(page).to have_content('Conversion: 0.01213 tons CO2/gallon')
+
     expect(page).to have_content('Natural gas')
 
     expect(page.body.index('Electricity') < page.body.index('Heating oil'))
