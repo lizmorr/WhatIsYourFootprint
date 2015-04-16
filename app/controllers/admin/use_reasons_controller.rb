@@ -20,8 +20,7 @@ module Admin
           alert: "Sorry, you were not authorized to access that action!"
       else
         @errors = @use_reason.errors.full_messages
-        @carbon_source = CarbonSource.new
-        @carbon_sources = CarbonSource.all
+        @use_reasons=UseReason.all
         render "admin/carbon_sources/index"
       end
     end

@@ -1,25 +1,27 @@
 <%= render 'shared/errors' if @errors %>
 
-<% if @carbon_sources %>
-  <div class="row" id="admin-carbon-index">
-    <ul>
+<div class="row">
+  <div class="small-4 columns">
+    <h2>Add New Carbon Source</h2>
+    <%= render 'new' %>
+  </div>
+
+  <div class="small-8 columns">
     <h2>All Sources</h2>
-      <% @carbon_sources.each do |carbon_source| %>
-        <li>
-          <h2><%= link_to carbon_source.source, carbon_source_path(carbon_source) %></h2>
+    <% if @carbon_sources %>
+      <div class="row" id="admin-carbon-index">
+        <ul>
+          <% @carbon_sources.each do |carbon_source| %>
+            <h2 class="subheader"><%= "#{carbon_source.source}" %></h2>
             <ul>
               <li>
                 Conversion: <%= "#{carbon_source.conversion_factor} #{carbon_source.conversion_units}" %>
               </li>
             </ul>
-          <%= link_to "Edit #{carbon_source.source}", edit_admin_carbon_source_path(carbon_source) %>
-        </li>
-      <% end %>
-    </ul>
+            <%= link_to "Edit #{carbon_source.source}", edit_admin_carbon_source_path(carbon_source) %>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
   </div>
-<% end %>
-
-<div class="row">
-  <h2>Add New Carbon Source</h2>
-  <%= render 'new' %>
 </div>

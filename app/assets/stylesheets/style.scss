@@ -1,0 +1,25 @@
+@import 'foundation_and_overrides';
+
+$font-family-cursive: "Lobster Two", cursive;
+
+.top-bar {
+  margin-bottom: 1em;
+}
+
+.title-area a {
+  font-family: $font-family-cursive;
+}
+
+.top-bar-section .right a {
+  font-family: $font-family-cursive;
+}
+
+.flash.flash-notice {
+  background-color: $info-color;
+  padding: 0.5em;
+}
+
+ul#errors {
+  background-color: $warning-color;
+  padding: 0.5em;
+}
