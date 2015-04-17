@@ -1,23 +1,17 @@
 module Admin
   class CarbonSourcesController < ApplicationController
+    before_action :authenticate_user_is_admin
+
     def index
-      if current_user.try(:admin?)
-        @carbon_sources = CarbonSource.all
-        @carbon_source = CarbonSource.new
-      else
-        redirect_to root_path,
-          alert: "Sorry, you were not authorized to access that page!"
-      end
+      @carbon_sources = CarbonSource.all
+      @carbon_source = CarbonSource.new
     end
 
     def create
       @carbon_source = CarbonSource.new(new_carbon_source_params)
-      if current_user.try(:admin?) && @carbon_source.save
+      if @carbon_source.save
         redirect_to admin_carbon_sources_path,
           notice: "#{@carbon_source.source} added as carbon source"
-      elsif !current_user.try(:admin?)
-        redirect_to root_path,
-          alert: "Sorry, you were not authorized to access that action!"
       else
         @errors = @carbon_source.errors.full_messages
         @carbon_sources = CarbonSource.all
@@ -26,23 +20,14 @@ module Admin
     end
 
     def edit
-      if current_user.try(:admin?)
-        @carbon_source = CarbonSource.find(params[:id])
-      else
-        redirect_to root_path,
-          alert: "Sorry, you were not authorized to access that page!"
-      end
+      @carbon_source = CarbonSource.find(params[:id])
     end
 
     def update
       @carbon_source = CarbonSource.find(params[:id])
-      if current_user.try(:admin?) &&
-          @carbon_source.update(edit_carbon_source_params)
+      if @carbon_source.update(edit_carbon_source_params)
         redirect_to admin_carbon_sources_path,
           notice: "#{@carbon_source.source} updated!"
-      elsif !current_user.try(:admin?)
-        redirect_to root_path,
-          alert: "Sorry, you were not authorized to access that action!"
       else
         @errors = @carbon_source.errors.full_messages
         render :edit

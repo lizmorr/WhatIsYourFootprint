@@ -45,7 +45,6 @@ feature 'admin edits use reason', %{
 
     visit edit_admin_use_reason_path(reason)
 
-    expect(page).to have_content('Sorry, you were not authorized to ' +
-      'access that page!')
+    expect(page).to have_content('You are not authorized to access that!')
   end
 end
