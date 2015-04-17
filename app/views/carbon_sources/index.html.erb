@@ -4,7 +4,7 @@
     <div class="row" id="admin-carbon-index">
       <ul>
         <% @carbon_sources.each do |carbon_source| %>
-          <h2 class="subheader"><%= "#{carbon_source.source}" %></h2>
+          <h2 class="subheader"><%= "#{carbon_source.name}" %></h2>
           <ul>
             <li>
               Conversion: <%= "#{carbon_source.conversion_factor} #{carbon_source.conversion_units}" %>

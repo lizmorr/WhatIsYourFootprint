@@ -12,13 +12,13 @@
       <div class="row" id="admin-carbon-index">
         <ul>
           <% @carbon_sources.each do |carbon_source| %>
-            <h2 class="subheader"><%= "#{carbon_source.source}" %></h2>
+            <h2 class="subheader"><%= "#{carbon_source.name}" %></h2>
             <ul>
               <li>
                 Conversion: <%= "#{carbon_source.conversion_factor} #{carbon_source.conversion_units}" %>
               </li>
             </ul>
-            <%= link_to "Edit #{carbon_source.source}", edit_admin_carbon_source_path(carbon_source) %>
+            <%= link_to "Edit #{carbon_source.name}", edit_admin_carbon_source_path(carbon_source) %>
           <% end %>
         </ul>
       </div>
