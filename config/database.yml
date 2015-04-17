@@ -81,5 +81,3 @@ test:
 production:
   <<: *default
   database: carbon_footprint_production
-  username: carbon_footprint
-  password: <%= ENV['CARBON_FOOTPRINT_DATABASE_PASSWORD'] %>
