@@ -12,7 +12,7 @@ feature 'admin adds new carbon sources', %{
 
     visit admin_carbon_sources_path
 
-    fill_in 'Source', with: "Heating oil"
+    fill_in 'Name', with: "Heating oil"
     fill_in 'Conversion factor', with: 0.010213
     fill_in 'Conversion units', with: 'tons CO2/gallon'
 
@@ -29,7 +29,7 @@ feature 'admin adds new carbon sources', %{
 
     visit admin_carbon_sources_path
 
-    fill_in 'Source', with: "Heating oil"
+    fill_in 'Name', with: "Heating oil"
     click_on 'Add new source'
 
     expect(page).to_not have_content('Heating oil')

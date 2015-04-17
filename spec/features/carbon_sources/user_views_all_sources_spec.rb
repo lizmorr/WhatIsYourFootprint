@@ -7,10 +7,10 @@ feature 'user views all potential carbon sources', %{
 } do
 
   scenario 'User can see all sources' do
-    FactoryGirl.create(:carbon_source, source: 'Electricity')
-    FactoryGirl.create(:carbon_source, source: 'Natural gas')
+    FactoryGirl.create(:carbon_source, name: 'Electricity')
+    FactoryGirl.create(:carbon_source, name: 'Natural gas')
     detail_source = FactoryGirl.create(:carbon_source,
-      source: 'Heating oil',
+      name: 'Heating oil',
       conversion_factor: 0.01213,
       conversion_units: 'tons CO2/gallon',
 )
