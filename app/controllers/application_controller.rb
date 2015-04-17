@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
       redirect_to root_path, alert: "You are not authorized to access that!"
     end
   end
+
+  def after_sign_in_path_for(resource)
+    usages_path
+  end
 end

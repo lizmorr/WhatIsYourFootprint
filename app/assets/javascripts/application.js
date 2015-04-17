@@ -12,7 +12,18 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui/datepicker
 //= require foundation
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+$(function(){
+  $(document).foundation();
+});
+
+$(function() {
+  $('#usage_start_date').datepicker();
+});
+
+$(function() {
+  $('#usage_end_date').datepicker();
+});

@@ -18,12 +18,12 @@ describe Usage do
   it { should have_valid(:units).when("gallons", "kWhs") }
   it { should_not have_valid(:units).when("", nil, "thing") }
 
-  it { should validate_presence_of(:usage_start_date) }
-  it { should have_valid(:usage_start_date).when("01/02/2014", "12/02/2015") }
-  it { should_not have_valid(:usage_start_date).when("", nil, "13/13/2015") }
+  it { should validate_presence_of(:start_date) }
+  it { should have_valid(:start_date).when("01/02/2014", "12/02/2015") }
+  it { should_not have_valid(:start_date).when("", nil, "13/13/2015") }
 
-  it { should validate_presence_of(:usage_end_date) }
-  it { should have_valid(:usage_end_date).when("01/02/2014", "12/02/2015") }
-  it { should_not have_valid(:usage_end_date).when("", nil, "13/13/2015") }
+  it { should validate_presence_of(:end_date) }
+  it { should have_valid(:end_date).when("01/02/2014", "12/02/2015") }
+  it { should_not have_valid(:end_date).when("", nil, "13/13/2015") }
 
 end

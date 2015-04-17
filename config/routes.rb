@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   end
 
   resources :carbon_sources, only: [:index, :show]
+
+  resources :usages, only: [:index, :new, :create]
 end

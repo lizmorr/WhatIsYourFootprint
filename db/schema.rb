@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150417152118) do
+ActiveRecord::Schema.define(version: 20150417174752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 20150417152118) do
     t.integer  "carbon_source_id", null: false
     t.float    "amount_used",      null: false
     t.string   "units",            null: false
-    t.date     "usage_start_date", null: false
-    t.date     "usage_end_date",   null: false
+    t.date     "start_date",       null: false
+    t.date     "end_date",         null: false
     t.text     "notes"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false

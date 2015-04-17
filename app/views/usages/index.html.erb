@@ -1,0 +1,17 @@
+<h2><%= "#{current_user.email}'s Carbon Use" %></h2>
+<% if @usages %>
+  <% @usages.each do |usage| %>
+    <div class="row">
+      <div class="small-12 columns">
+        <%= usage.all_source_info %>
+        <ul>
+          <li><%= "Time Period: #{usage.time_period}" %></li>
+          <li><%= "Notes: #{usage.notes}" %></li>
+          <li> <%= "Emissions Category: #{usage.category}" %>
+        </ul>
+      </div>
+    </div>
+  <% end  %>
+<% end %>
+
+<%= link_to "Add personal usage", new_usage_path %>

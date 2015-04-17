@@ -10,9 +10,25 @@ class Usage < ActiveRecord::Base
   validates :use_reason, presence: true
   validates :amount_used, presence: true, numericality: true
   validates :units, presence: true, inclusion: {in: UNITS}
-  validates_date :usage_start_date
-  validates :usage_start_date, presence: true
-  validates_date :usage_end_date, presence: true
-  validates :usage_end_date, presence: true
+  validates_date :start_date
+  validates :start_date, presence: true
+  validates_date :end_date, presence: true
+  validates :end_date, presence: true
+
+  def time_period
+    start_date = self.start_date.strftime("%m/%d/%Y")
+    end_date = self.end_date.strftime("%m/%d/%Y")
+    "#{start_date} - #{end_date}"
+  end
+
+  def all_source_info
+    "#{self.amount_used} #{self.units} #{self.carbon_source.name}"
+  end
+
+  def category
+    self.use_reason.name
+  end
+
+
 
 end
