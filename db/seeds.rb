@@ -1,7 +1,13 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+CarbonUse.create(source: "Fuel Oil",
+  conversion_factor: 22.61,
+  conversion_units: "lbs / gallon")
+CarbonUse.create(source: "Natural Gas",
+  conversion_factor: 0.12,
+  conversion_units: "lbs / cubic foot")
+CarbonUse.create(source: "Fuel Oil",
+  conversion_factor: 22.61,
+  conversion_units: "lbs / gallon")
+
+UseReason.create(name: "Home")
+UseReason.create(name: "Travel")
+UseReason.create(name: "Work")
