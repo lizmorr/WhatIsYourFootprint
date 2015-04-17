@@ -11,6 +11,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'foundation-rails'
+gem 'sqlite3'
 
 group :development, :test do
   gem 'web-console', '~> 2.0'
@@ -25,4 +26,8 @@ end
 
 group :test do
   gem 'coveralls', require: false
+end
+
+group :production do
+  gem 'rails_12factor'
 end
