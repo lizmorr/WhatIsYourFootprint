@@ -9,5 +9,5 @@ Rails.application.routes.draw do
 
   resources :carbon_sources, only: [:index, :show]
 
-  resources :usages, only: [:index, :new, :create]
+  resources :usages
 end

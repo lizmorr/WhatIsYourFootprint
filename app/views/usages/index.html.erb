@@ -11,6 +11,7 @@
           <li><%= "Notes: #{usage.notes}" %></li>
           <li> <%= "Use Reason: #{usage.category}" %>
         </ul>
+        <%= link_to "Edit this entry", edit_usage_path(usage) %>
       </div>
     </div>
   <% end  %>

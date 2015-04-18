@@ -21,6 +21,21 @@ class UsagesController < ApplicationController
     end
   end
 
+  def edit
+    @usage = Usage.find(params[:id])
+  end
+
+  def update
+    @usage = Usage.find(params[:id])
+    if @usage.update(usage_params)
+      redirect_to usages_path,
+        notice: "Usage updated!"
+    else
+      @errors = @usage.errors.full_messages
+      render :edit
+    end
+  end
+
   protected
 
   def usage_params

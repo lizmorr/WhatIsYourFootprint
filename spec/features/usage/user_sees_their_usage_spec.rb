@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'admin adds new carbon sources', %{
+feature 'user views their usage', %{
   As a user
   I want to view an overview of my usage
   So I can see what I have entered
