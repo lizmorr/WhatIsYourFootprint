@@ -28,4 +28,8 @@ class Usage < ActiveRecord::Base
   def category
     use_reason.name
   end
+
+  def changeable_by?(user)
+    user == self.user
+  end
 end

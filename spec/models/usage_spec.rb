@@ -26,4 +26,21 @@ describe Usage do
   it { should have_valid(:end_date).when("01/02/2014", "12/02/2015") }
   it { should_not have_valid(:end_date).when("", nil, "13/13/2015") }
 
+  describe 'changeable_by?' do
+    context 'creator of usage signed in' do
+      it 'returns true' do
+        user = FactoryGirl.create(:user)
+        usage = FactoryGirl.create(:usage, user: user)
+        expect(usage.changeable_by?(user)).to eq true
+      end
+    end
+    context 'user not associated with usage signed in' do
+      it 'returns false' do
+        user = FactoryGirl.create(:user)
+        another_user = FactoryGirl.create(:user)
+        usage = FactoryGirl.create(:usage, user: user)
+        expect(usage.changeable_by?(another_user)).to eq false
+      end
+    end
+  end
 end

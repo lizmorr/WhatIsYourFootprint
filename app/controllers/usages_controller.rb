@@ -36,6 +36,15 @@ class UsagesController < ApplicationController
     end
   end
 
+  def destroy
+    @usage = Usage.find(params[:id])
+    if @usage.changeable_by?(current_user)
+      @usage.destroy
+      flash[:notice] = "Usage deleted"
+      redirect_to usages_path
+    end
+  end
+
   protected
 
   def usage_params

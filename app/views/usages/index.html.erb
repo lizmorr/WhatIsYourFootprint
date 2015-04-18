@@ -12,6 +12,7 @@
           <li> <%= "Use Reason: #{usage.category}" %>
         </ul>
         <%= link_to "Edit this entry", edit_usage_path(usage) %>
+        <%= link_to "Delete this entry", usage_path(usage), method: :delete %>
       </div>
     </div>
   <% end  %>
