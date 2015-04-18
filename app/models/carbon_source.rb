@@ -1,6 +1,5 @@
 class CarbonSource < ActiveRecord::Base
-  CATEGORIES = %w(Home Travel)
-  SUBCATEGORIES = %w(Heating Electric Cooking Car)
+  has_many :usages
 
   validates :name, presence: true
   validates :conversion_factor, presence: true, numericality: {
