@@ -1,3 +1,5 @@
+<%= rendor "share/errors" if @errors %>
+
 <h2><%= "#{current_user.email}'s Carbon Use" %></h2>
 <% if @usages %>
   <% @usages.each do |usage| %>
@@ -7,7 +9,7 @@
         <ul>
           <li><%= "Time Period: #{usage.time_period}" %></li>
           <li><%= "Notes: #{usage.notes}" %></li>
-          <li> <%= "Emissions Category: #{usage.category}" %>
+          <li> <%= "Use Reason: #{usage.category}" %>
         </ul>
       </div>
     </div>

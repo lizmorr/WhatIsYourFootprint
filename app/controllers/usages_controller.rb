@@ -1,6 +1,8 @@
 class UsagesController < ApplicationController
+  before_action :authenticate_user
+
   def index
-    @usages = Usage.where(user: current_user) || []
+    @usages = Usage.where(user: current_user)
   end
 
   def new
