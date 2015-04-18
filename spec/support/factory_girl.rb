@@ -20,4 +20,14 @@ FactoryGirl.define do
   factory :use_reason do
     name 'Home'
   end
+
+  factory :usage do
+    amount_used 10
+    units "gallons"
+    start_date "01/15/2015"
+    end_date "02/15/2015"
+    user
+    carbon_source
+    use_reason
+  end
 end

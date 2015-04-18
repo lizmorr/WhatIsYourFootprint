@@ -1,6 +1,6 @@
 <%= rendor "share/errors" if @errors %>
 
-<h2><%= "#{current_user.email}'s Carbon Use" %></h2>
+<h2><%= "#{current_user.email}'s Carbon Usage" %></h2>
 <% if @usages %>
   <% @usages.each do |usage| %>
     <div class="row">
