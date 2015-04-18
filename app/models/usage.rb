@@ -9,7 +9,7 @@ class Usage < ActiveRecord::Base
   validates :carbon_source, presence: true
   validates :use_reason, presence: true
   validates :amount_used, presence: true, numericality: true
-  validates :units, presence: true, inclusion: {in: UNITS}
+  validates :units, presence: true, inclusion: { in: UNITS }
   validates_date :start_date
   validates :start_date, presence: true
   validates_date :end_date, presence: true
@@ -22,13 +22,10 @@ class Usage < ActiveRecord::Base
   end
 
   def all_source_info
-    "#{self.amount_used} #{self.units} #{self.carbon_source.name}"
+    "#{amount_used} #{units} #{carbon_source.name}"
   end
 
   def category
-    self.use_reason.name
+    use_reason.name
   end
-
-
-
 end
