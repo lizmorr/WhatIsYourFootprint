@@ -30,7 +30,8 @@ feature 'admin adds new carbon sources', %{
     expect(page).to have_content('New personal usage added')
     expect(page).to have_content('10.0 gallons Unleaded Gas')
     expect(page).to have_content('Time Period: 01/15/2015 - 02/15/2015')
-    expect(page).to have_content('Started taking the T to work, so drove much less')
+    expect(page).to have_content('Started taking the T to work, ' +
+      'so drove much less')
     expect(page).to have_content('Use Reason: Travel')
 
   end
