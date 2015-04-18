@@ -16,7 +16,7 @@ feature 'user edits their usage', %{
     sign_in_as(user)
     click_link "Edit this entry"
 
-    fill_in "Amount used", with: 15
+    fill_in "Amount used", with: "15"
     fill_in "Start date", with: "01/15/2015"
 
     click_button "Edit usage"
@@ -28,5 +28,23 @@ feature 'user edits their usage', %{
     expect(page).to_not have_content("02/15/2015 - 02/15/2015")
   end
 
-  scenario 'user edits usage with invalid information and fails'
+  scenario 'user edits usage with invalid information and fails' do
+    source = FactoryGirl.create(:carbon_source, name: "Heating Oil")
+    user = FactoryGirl.create(:user)
+    usage = FactoryGirl.create(:usage, amount_used: 10,
+      start_date: "02/15/2015", end_date: "02/15/2015", units: "gallons",
+      carbon_source: source, user: user)
+
+    sign_in_as(user)
+    click_link "Edit this entry"
+
+    fill_in "Amount used", with: ""
+    fill_in "Start date", with: "15/15/2015"
+
+    click_button "Edit usage"
+
+    expect(page).to have_content("Edit Usage")
+    expect(page).to have_content("Amount used can't be blank")
+    expect(page).to have_content("Start date is not a valid date")
+  end
 end
