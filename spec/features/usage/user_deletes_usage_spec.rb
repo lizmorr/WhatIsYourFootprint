@@ -9,9 +9,14 @@ feature 'user deletes their usage', %{
   scenario 'user deletes their entry' do
     source = FactoryGirl.create(:carbon_source, name: "Heating Oil")
     user = FactoryGirl.create(:user)
-    usage = FactoryGirl.create(:usage, amount_used: 10,
-      start_date: "02/15/2015", end_date: "02/15/2015", units: "gallons",
-      carbon_source: source, user: user)
+    FactoryGirl.create(:usage,
+      amount_used: 10,
+      start_date: "02/15/2015",
+      end_date: "02/15/2015",
+      units: "gallons",
+      carbon_source: source,
+      user: user
+    )
 
     sign_in_as(user)
     click_link "Delete this entry"
