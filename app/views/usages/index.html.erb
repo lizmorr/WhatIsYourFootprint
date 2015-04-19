@@ -1,21 +1,25 @@
 <%= rendor "share/errors" if @errors %>
 
-<h2><%= "#{current_user.email}'s Carbon Usage" %></h2>
-<% if @usages %>
-  <% @usages.each do |usage| %>
-    <div class="row">
-      <div class="small-12 columns">
-        <%= usage.all_source_info %>
-        <ul>
-          <li><%= "Time Period: #{usage.time_period}" %></li>
-          <li><%= "Notes: #{usage.notes}" %></li>
-          <li> <%= "Use Reason: #{usage.category}" %>
-        </ul>
-        <%= link_to "Edit this entry", edit_usage_path(usage) %>
-        <%= link_to "Delete this entry", usage_path(usage), method: :delete %>
-      </div>
-    </div>
-  <% end  %>
-<% end %>
+<div class="row">
+  <div class="small-12 columns">
+    <h1><%= "#{current_user.email}'s Carbon Usage" %></h1>
+    <% if @usages %>
+      <% @usages.each do |usage| %>
+        <div class="panel hide-for-small">
+          <h3><%= usage.all_source_info %></h3>
+          <h5>Time Period: <span class="subheader"><%= "#{usage.time_period}" %></span></h5>
+          <h5>Use Reason: <span class="subheader"><%= "#{usage.category}" %></span></h5>
+          <h5>Notes: <span class="subheader"><%= "#{usage.notes}" %></span></h5>
+          <h6><small>
+            <%= link_to "Edit this entry", edit_usage_path(usage) %>
+            <%= link_to "Delete this entry", usage_path(usage), method: :delete %>
+          </small></h6>
+        </div>
+      <% end  %>
+    <% end %>
 
-<%= link_to "Add personal usage", new_usage_path %>
+    <%= paginate @usages, remote: true %>
+
+    <%= link_to "Add personal usage", new_usage_path %>
+  </div>
+</div>
