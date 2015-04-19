@@ -3,7 +3,7 @@ class Usage < ActiveRecord::Base
   belongs_to :carbon_source
   belongs_to :user
 
-  delegate :conversion_units, :conversion_units, to: :carbon_source
+  delegate :conversion_factor, to: :carbon_source
 
   UNITS = ["gallons", "cubic feet", "kWhs"]
 
@@ -16,6 +16,14 @@ class Usage < ActiveRecord::Base
   validates :start_date, presence: true
   validates_date :end_date, presence: true
   validates :end_date, presence: true
+
+  def number_days
+    if start_date == end_date
+      1
+    else
+      (end_date - start_date).to_i
+    end
+  end
 
   def time_period
     start_date = self.start_date.strftime("%m/%d/%Y")

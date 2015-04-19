@@ -43,4 +43,25 @@ describe Usage do
       end
     end
   end
+
+  describe 'number days' do
+    context 'start and end date are same' do
+      it 'returns 1' do
+        usage = FactoryGirl.create(
+          :usage,
+          start_date: "02/15/2015",
+          end_date: "02/15/2015")
+        expect(usage.number_days).to eq 1
+      end
+    end
+    context 'start and end date are different' do
+      it 'returns 5' do
+        usage = FactoryGirl.create(
+          :usage,
+          start_date: "02/15/2015",
+          end_date: "02/20/2015")
+        expect(usage.number_days).to eq 5
+      end
+    end
+  end
 end
