@@ -6,7 +6,7 @@ feature 'user views their usage', %{
   So I can see what I have entered
 } do
 
-  scenario 'user logs in and sees their usage entries with most recent on top' do
+  scenario 'user logs in and sees their usage with most recent on top' do
     user = FactoryGirl.create(:user)
     heating_oil = FactoryGirl.create(:carbon_source, name: "Heating Oil")
     electricity = FactoryGirl.create(:carbon_source, name: "Electricity")
