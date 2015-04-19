@@ -18,6 +18,8 @@
       <% end  %>
     <% end %>
 
+    <%= paginate @usages, remote: true %>
+
     <%= link_to "Add personal usage", new_usage_path %>
   </div>
 </div>

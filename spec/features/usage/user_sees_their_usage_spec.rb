@@ -28,6 +28,25 @@ feature 'user views their usage', %{
     expect(page.body.index(older_source.all_source_info) > page.body.index(newer_source.all_source_info))
   end
 
+  scenario 'user only sees 10 usage entries per page' do
+    user = FactoryGirl.create(:user)
+    heating_oil = FactoryGirl.create(:carbon_source, name: "Heating Oil")
+    electricity = FactoryGirl.create(:carbon_source, name: "Electricity")
+
+    newer_source = FactoryGirl.create_list(:usage, 10, user: user, carbon_source: electricity)
+    older_source = FactoryGirl.create_list(:usage, 10, user: user, carbon_source: heating_oil, created_at: 5.days.ago)
+
+    sign_in_as(user)
+
+    expect(page).to have_content("Electricity")
+    expect(page).to_not have_content("Heating Oil")
+
+    click_link "2"
+
+    expect(page).to_not have_content("Electricity")
+    expect(page).to have_content("Heating Oil")
+  end
+
   scenario 'user does not see another person\'s entries' do
     user = FactoryGirl.create(:user, email: "person1@test.com")
     source = FactoryGirl.create(:usage, user: user)

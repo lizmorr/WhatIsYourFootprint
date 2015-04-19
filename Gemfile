@@ -13,6 +13,7 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'jc-validates_timeliness'
 gem 'jquery-ui-rails'
+gem 'kaminari'
 
 group :development, :test do
   gem 'web-console', '~> 2.0'
