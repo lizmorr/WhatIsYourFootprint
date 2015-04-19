@@ -16,14 +16,14 @@ feature 'user views their usage', %{
     sign_in_as(user)
 
     expect(page).to have_content("#{user.email}'s Carbon Usage")
-    expect(page).to have_content("#{older_source.all_source_info}")
-    expect(page).to have_content("#{older_source.time_period}")
-    expect(page).to have_content("#{older_source.category}")
 
     expect(page).to have_content("#{newer_source.all_source_info}")
     expect(page).to have_content("#{newer_source.time_period}")
     expect(page).to have_content("#{newer_source.category}")
 
+    expect(page).to have_content("#{older_source.all_source_info}")
+    expect(page).to have_content("#{older_source.time_period}")
+    expect(page).to have_content("#{older_source.category}")
 
     expect(page.body.index(older_source.all_source_info) > page.body.index(newer_source.all_source_info))
   end

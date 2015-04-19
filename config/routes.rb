@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
-  root 'homes#index'
   devise_for :users
+
+  authenticated :user do
+    root to: "usages#index", as: :authenticated_root
+  end
+
+  unauthenticated do
+    root to: 'homes#index'
+  end
 
   namespace :admin do
     resources :carbon_sources, except: [:show, :destroy]
