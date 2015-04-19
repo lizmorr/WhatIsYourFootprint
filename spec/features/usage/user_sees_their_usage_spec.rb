@@ -10,8 +10,10 @@ feature 'user views their usage', %{
     user = FactoryGirl.create(:user)
     heating_oil = FactoryGirl.create(:carbon_source, name: "Heating Oil")
     electricity = FactoryGirl.create(:carbon_source, name: "Electricity")
-    older_source = FactoryGirl.create(:usage, user: user, carbon_source: heating_oil, created_at: 5.days.ago)
-    newer_source =FactoryGirl.create(:usage, user: user, carbon_source: electricity)
+    older_source = FactoryGirl.create(:usage, user: user,
+      carbon_source: heating_oil, created_at: 5.days.ago)
+    newer_source = FactoryGirl.create(:usage, user: user,
+      carbon_source: electricity)
 
     sign_in_as(user)
 
@@ -25,7 +27,8 @@ feature 'user views their usage', %{
     expect(page).to have_content("#{older_source.time_period}")
     expect(page).to have_content("#{older_source.category}")
 
-    expect(page.body.index(older_source.all_source_info) > page.body.index(newer_source.all_source_info))
+    expect(page.body.index(older_source.all_source_info) >
+      page.body.index(newer_source.all_source_info))
   end
 
   scenario 'user only sees 10 usage entries per page' do
@@ -33,8 +36,10 @@ feature 'user views their usage', %{
     heating_oil = FactoryGirl.create(:carbon_source, name: "Heating Oil")
     electricity = FactoryGirl.create(:carbon_source, name: "Electricity")
 
-    newer_source = FactoryGirl.create_list(:usage, 10, user: user, carbon_source: electricity)
-    older_source = FactoryGirl.create_list(:usage, 10, user: user, carbon_source: heating_oil, created_at: 5.days.ago)
+    FactoryGirl.create_list(:usage, 10, user: user, carbon_source: electricity)
+    FactoryGirl.create_list(:usage, 10, user: user,
+      carbon_source: heating_oil,
+      created_at: 5.days.ago)
 
     sign_in_as(user)
 
