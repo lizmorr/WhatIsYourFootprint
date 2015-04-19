@@ -1,21 +1,25 @@
 <%= rendor "share/errors" if @errors %>
 
-<h2><%= "#{current_user.email}'s Carbon Usage" %></h2>
-<% if @usages %>
-  <% @usages.each do |usage| %>
-    <div class="row">
-      <div class="small-12 columns">
-        <%= usage.all_source_info %>
-        <ul>
-          <li><%= "Time Period: #{usage.time_period}" %></li>
-          <li><%= "Notes: #{usage.notes}" %></li>
-          <li> <%= "Use Reason: #{usage.category}" %>
-        </ul>
-        <%= link_to "Edit this entry", edit_usage_path(usage) %>
-        <%= link_to "Delete this entry", usage_path(usage), method: :delete %>
-      </div>
-    </div>
-  <% end  %>
-<% end %>
+<div class="row">
+  <div class="small-12 columns">
+    <h2><%= "#{current_user.email}'s Carbon Usage" %></h2>
+    <% if @usages %>
+      <% @usages.each do |usage| %>
+        <div class="row">
+          <div class="small-12 columns">
+            <%= usage.all_source_info %>
+            <ul>
+              <li><%= "Time Period: #{usage.time_period}" %></li>
+              <li><%= "Notes: #{usage.notes}" %></li>
+              <li> <%= "Use Reason: #{usage.category}" %>
+            </ul>
+            <%= link_to "Edit this entry", edit_usage_path(usage) %>
+            <%= link_to "Delete this entry", usage_path(usage), method: :delete %>
+          </div>
+        </div>
+      <% end  %>
+    <% end %>
 
-<%= link_to "Add personal usage", new_usage_path %>
+    <%= link_to "Add personal usage", new_usage_path %>
+  </div>
+</div>
