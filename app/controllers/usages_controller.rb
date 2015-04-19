@@ -27,12 +27,21 @@ class UsagesController < ApplicationController
 
   def update
     @usage = Usage.find(params[:id])
-    if @usage.update(usage_params)
+    if @usage.changeable_by?(current_user) && @usage.update(usage_params)
       redirect_to usages_path,
         notice: "Usage updated!"
     else
       @errors = @usage.errors.full_messages
       render :edit
+    end
+  end
+
+  def destroy
+    @usage = Usage.find(params[:id])
+    if @usage.changeable_by?(current_user)
+      @usage.destroy
+      flash[:notice] = "Usage deleted"
+      redirect_to usages_path
     end
   end
 
