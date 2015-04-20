@@ -39,6 +39,7 @@ feature 'user views their usage', %{
   end
 
   scenario 'user only sees 10 usage entries per page' do
+    pending
     user = FactoryGirl.create(:user)
     heating_oil = FactoryGirl.create(:carbon_source, name: "Heating Oil")
     electricity = FactoryGirl.create(:carbon_source, name: "Electricity")
