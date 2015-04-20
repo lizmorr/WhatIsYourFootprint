@@ -25,13 +25,13 @@ class Usage < ActiveRecord::Base
     end
   end
 
-  def time_period
+  def display_time_period
     start_date = self.start_date.strftime("%m/%d/%Y")
     end_date = self.end_date.strftime("%m/%d/%Y")
     "#{start_date} - #{end_date}"
   end
 
-  def all_source_info
+  def display_source_info_for_usage
     "#{amount_used} #{units} #{carbon_source.name}"
   end
 
@@ -43,16 +43,20 @@ class Usage < ActiveRecord::Base
     user == self.user
   end
 
-  def self.usage_emissions_hash(user)
-    usages = Usage.where(user: user).order(created_at: :desc)
-    usage_with_emissions = {}
-    usages.each do |usage|
-      usage_with_emissions[usage] = Emission.new(
-        usage.conversion_factor,
-        usage.amount_used,
-        usage.number_days
-      )
-    end
-    usage_with_emissions
+  def self.user_usage(user)
+    where(user: user).order(created_at: :desc)
   end
+
+  def emission
+    amount_used * conversion_factor
+  end
+
+  def daily_emission
+    emission / number_days
+  end
+
+  def display_emission
+    "#{emission} lbs CO2"
+  end
+
 end

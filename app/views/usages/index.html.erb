@@ -3,11 +3,11 @@
   <div class="small-12 columns">
     <h1><%= "#{current_user.email}'s Carbon Usage" %></h1>
     <% if @usages %>
-      <% @usages.each do |usage, emissions| %>
+      <% @usages.each do |usage| %>
         <div class="panel hide-for-small">
-          <h3><%= usage.all_source_info %></h3>
-          <h5>Emissions: <span class="subheader"> <%= "#{emissions.display_total_usage}" %>
-          <h5>Time Period: <span class="subheader"><%= "#{usage.time_period}" %></span></h5>
+          <h3><%= usage.display_source_info_for_usage %></h3>
+          <h5>Emissions: <span class="subheader"> <%= "#{usage.display_emission}" %>
+          <h5>Time Period: <span class="subheader"><%= "#{usage.display_time_period}" %></span></h5>
           <h5>Use Reason: <span class="subheader"><%= "#{usage.category}" %></span></h5>
           <h5>Notes: <span class="subheader"><%= "#{usage.notes}" %></span></h5>
           <h6><small>
@@ -17,6 +17,8 @@
         </div>
       <% end  %>
     <% end %>
+
+    <%= paginate @usages, remote: true %>
 
     <%= link_to "Add personal usage", new_usage_path %>
   </div>

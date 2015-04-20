@@ -66,7 +66,7 @@ describe Usage do
     end
   end
 
-  describe 'time_period' do
+  describe 'display_time_period' do
     context 'shows time period' do
       it 'returns 02/15/2015 - 03/15/2015' do
         usage = FactoryGirl.create(
@@ -74,35 +74,17 @@ describe Usage do
           start_date: "02/15/2015",
           end_date: "03/15/2015"
         )
-        expect(usage.time_period).to eq "02/15/2015 - 03/15/2015"
+        expect(usage.display_time_period).to eq "02/15/2015 - 03/15/2015"
       end
     end
   end
 
-  describe 'all_source_info' do
+  describe 'display_source_info_for_usage' do
     context 'shows string of source info' do
       it 'returns 10 gallons Heating Oil' do
         source = FactoryGirl.create(:carbon_source, name: "Heating Oil", conversion_factor: 2)
         usage = FactoryGirl.create(:usage, amount_used: 10, units: "gallons", carbon_source: source)
-        expect(usage.all_source_info).to eq  "10.0 gallons Heating Oil"
-      end
-    end
-  end
-
-  describe 'usage_emissions_hash' do
-    context 'returns hash with usage and emissions' do
-      it 'returns a hash with values' do
-        user = FactoryGirl.create(:user)
-        source = FactoryGirl.create(:carbon_source)
-        usage = FactoryGirl.create(:usage, user: user, carbon_source: source)
-        expect(Usage.usage_emissions_hash(user)).not_to be_empty
-      end
-      it 'returns an empty hash' do
-        user = FactoryGirl.create(:user)
-        another_user = FactoryGirl.create(:user)
-        source = FactoryGirl.create(:carbon_source)
-        usage = FactoryGirl.create(:usage, user: user, carbon_source: source)
-        expect(Usage.usage_emissions_hash(another_user)).to be_empty
+        expect(usage.display_source_info_for_usage).to eq  "10.0 gallons Heating Oil"
       end
     end
   end

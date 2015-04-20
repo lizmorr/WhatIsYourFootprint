@@ -2,7 +2,7 @@ class UsagesController < ApplicationController
   before_action :authenticate_user
 
   def index
-    @usages = Usage.usage_emissions_hash(current_user)
+    @usages = Usage.user_usage(current_user).page(params[:page])
   end
 
   def new
