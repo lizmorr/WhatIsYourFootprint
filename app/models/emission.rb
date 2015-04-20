@@ -1,13 +1,15 @@
 class Emission
-  def initialize(usage)
-    @usage = usage
+  def initialize(conversion_factor, amount_used, number_days)
+    @conversion_factor = conversion_factor
+    @amount_used = amount_used
+    @number_days = number_days
   end
 
   def emissions_over_time_period
-    @usage.amount_used * @usage.conversion_factor
+    @amount_used * @conversion_factor
   end
 
   def daily_emissions
-    emissions_over_time_period / @usage.number_days
+    emissions_over_time_period / @number_days
   end
 end
