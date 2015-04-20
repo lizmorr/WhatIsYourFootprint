@@ -94,7 +94,7 @@ describe Usage do
           carbon_source: source
         )
         expect(usage.display_source_info_for_usage).
-          to eq"10.0 gallons Heating Oil"
+          to eq "10.0 gallons Heating Oil"
       end
     end
   end
