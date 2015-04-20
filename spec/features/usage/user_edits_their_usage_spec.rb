@@ -7,7 +7,11 @@ feature 'user edits their usage', %{
 } do
 
   scenario 'user successfully edits their entry' do
-    source = FactoryGirl.create(:carbon_source, name: "Heating Oil", conversion_factor: 2)
+    source = FactoryGirl.create(
+      :carbon_source,
+      name: "Heating Oil",
+      conversion_factor: 2
+    )
     user = FactoryGirl.create(:user)
     usage = FactoryGirl.create(:usage, amount_used: 10,
       start_date: "02/15/2015", end_date: "02/15/2015", units: "gallons",

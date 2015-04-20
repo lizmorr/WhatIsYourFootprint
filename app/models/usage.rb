@@ -58,5 +58,4 @@ class Usage < ActiveRecord::Base
   def display_emission
     "#{emission} lbs CO2"
   end
-
 end

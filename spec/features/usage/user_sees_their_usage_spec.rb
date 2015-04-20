@@ -26,11 +26,13 @@ feature 'user views their usage', %{
 
     expect(page).to have_content("#{user.email}'s Carbon Usage")
 
-    expect(page).to have_content("#{newer_source.display_source_info_for_usage}")
+    expect(page).to have_content(
+      "#{newer_source.display_source_info_for_usage}")
     expect(page).to have_content("#{newer_source.display_time_period}")
     expect(page).to have_content("#{newer_source.category}")
 
-    expect(page).to have_content("#{older_source.display_source_info_for_usage}")
+    expect(page).to have_content(
+      "#{older_source.display_source_info_for_usage}")
     expect(page).to have_content("#{older_source.display_time_period}")
     expect(page).to have_content("#{older_source.category}")
 

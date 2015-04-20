@@ -82,9 +82,19 @@ describe Usage do
   describe 'display_source_info_for_usage' do
     context 'shows string of source info' do
       it 'returns 10 gallons Heating Oil' do
-        source = FactoryGirl.create(:carbon_source, name: "Heating Oil", conversion_factor: 2)
-        usage = FactoryGirl.create(:usage, amount_used: 10, units: "gallons", carbon_source: source)
-        expect(usage.display_source_info_for_usage).to eq  "10.0 gallons Heating Oil"
+        source = FactoryGirl.create(
+          :carbon_source,
+          name: "Heating Oil",
+          conversion_factor: 2
+        )
+        usage = FactoryGirl.create(
+          :usage,
+          amount_used: 10,
+          units: "gallons",
+          carbon_source: source
+        )
+        expect(usage.display_source_info_for_usage).
+          to eq"10.0 gallons Heating Oil"
       end
     end
   end
