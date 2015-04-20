@@ -59,8 +59,32 @@ describe Usage do
         usage = FactoryGirl.create(
           :usage,
           start_date: "02/15/2015",
-          end_date: "02/20/2015")
+          end_date: "02/20/2015"
+        )
         expect(usage.number_days).to eq 5
+      end
+    end
+  end
+
+  describe 'time_period' do
+    context 'shows time period' do
+      it 'returns 02/15/2015 - 03/15/2015' do
+        usage = FactoryGirl.create(
+          :usage,
+          start_date: "02/15/2015",
+          end_date: "03/15/2015"
+        )
+        expect(usage.time_period).to eq "02/15/2015 - 03/15/2015"
+      end
+    end
+  end
+
+  describe 'all_source_info' do
+    context 'shows string of source info' do
+      it 'returns 10 gallons Heating Oil' do
+        source = FactoryGirl.create(:carbon_source, name: "Heating Oil", conversion_factor: 2)
+        usage = FactoryGirl.create(:usage, amount_used: 10, units: "gallons", carbon_source: source)
+        expect(usage.all_source_info).to eq  "10.0 gallons Heating Oil"
       end
     end
   end
