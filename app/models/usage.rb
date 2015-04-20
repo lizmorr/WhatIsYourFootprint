@@ -42,4 +42,17 @@ class Usage < ActiveRecord::Base
   def changeable_by?(user)
     user == self.user
   end
+
+  def self.usage_emissions_hash(user)
+    usages = Usage.where(user: user).order(created_at: :desc)
+    usage_with_emissions = {}
+    usages.each do |usage|
+      usage_with_emissions[usage] = Emission.new(
+        usage.conversion_factor,
+        usage.amount_used,
+        usage.number_days
+      )
+    end
+    usage_with_emissions
+  end
 end

@@ -88,4 +88,22 @@ describe Usage do
       end
     end
   end
+
+  describe 'usage_emissions_hash' do
+    context 'returns hash with usage and emissions' do
+      it 'returns a hash with values' do
+        user = FactoryGirl.create(:user)
+        source = FactoryGirl.create(:carbon_source)
+        usage = FactoryGirl.create(:usage, user: user, carbon_source: source)
+        expect(Usage.usage_emissions_hash(user)).not_to be_empty
+      end
+      it 'returns an empty hash' do
+        user = FactoryGirl.create(:user)
+        another_user = FactoryGirl.create(:user)
+        source = FactoryGirl.create(:carbon_source)
+        usage = FactoryGirl.create(:usage, user: user, carbon_source: source)
+        expect(Usage.usage_emissions_hash(another_user)).to be_empty
+      end
+    end
+  end
 end

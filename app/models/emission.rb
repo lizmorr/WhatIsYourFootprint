@@ -5,11 +5,15 @@ class Emission
     @number_days = number_days
   end
 
-  def emissions_over_time_period
+  def total_over_usage
     @amount_used * @conversion_factor
   end
 
   def daily_emissions
-    emissions_over_time_period / @number_days
+    total_over_usage / @number_days
+  end
+
+  def display_total_usage
+    "#{total_over_usage} lbs CO2"
   end
 end

@@ -2,11 +2,11 @@ require 'rails_helper'
 
 describe Emission do
 
-  describe 'emissions_over_time_period' do
+  describe 'total_over_usage' do
     context 'conversion_factor is 12.2 and amount used is 10' do
       it 'returns 122' do
         emission = Emission.new(12.2, 10, 5)
-        expect(emission.emissions_over_time_period).to eq 122
+        expect(emission.total_over_usage).to eq 122
       end
     end
   end
@@ -19,5 +19,4 @@ describe Emission do
       end
     end
   end
-
 end

@@ -29,7 +29,7 @@ feature 'user enters new usage', %{
     click_on 'Add new usage'
 
     expect(page).to have_content('New personal usage added')
-    expect(page).to have_content('Emissions: 20 lbs CO2')
+    expect(page).to have_content('Emissions: 20.0 lbs CO2')
     expect(page).to have_content('10.0 gallons Unleaded Gas')
     expect(page).to have_content('Time Period: 01/15/2015 - 02/15/2015')
     expect(page).to have_content('Started taking the T to work, ' +

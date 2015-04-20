@@ -24,7 +24,7 @@ feature 'user edits their usage', %{
     expect(page).to have_content("Usage updated!")
     expect(page).to have_content("15.0 gallons Heating Oil")
     expect(page).to_not have_content("10.0 gallons Heating Oil")
-    expect(page).to have_content("Emissions: 30 lbs CO2")
+    expect(page).to have_content("Emissions: 30.0 lbs CO2")
     expect(page).to_not have_content("Emissions: 20 lbs CO2")
     expect(page).to have_content("01/15/2015 - 02/15/2015")
     expect(page).to_not have_content("02/15/2015 - 02/15/2015")
