@@ -10,7 +10,7 @@ feature 'user enters new usage', %{
     FactoryGirl.create(:carbon_source,
       name: "Unleaded Gas",
       conversion_factor: 2,
-      conversion_units: "lbs / gallon")
+      units: "gallons")
     FactoryGirl.create(:use_reason, name: "Travel")
 
     user = FactoryGirl.create(:user)
@@ -18,9 +18,8 @@ feature 'user enters new usage', %{
 
     click_on "Add personal usage"
 
-    select "Unleaded Gas", from: "Source"
+    select "Unleaded Gas (gallons)", from: "Source"
     fill_in 'Amount used', with: "10"
-    select "gallons", from: "Units"
     select "Travel", from: "Use reason"
     fill_in "Start date", with: '01/15/2015'
     fill_in "End date", with: '02/15/2015'
@@ -41,7 +40,7 @@ feature 'user enters new usage', %{
   scenario 'user enters usage with missing information and fails' do
     FactoryGirl.create(:carbon_source,
       name: "Unleaded Gas",
-      conversion_units: "lbs / gallon")
+      units: "gallons")
     FactoryGirl.create(:use_reason, name: "Travel")
 
     user = FactoryGirl.create(:user)
@@ -49,14 +48,13 @@ feature 'user enters new usage', %{
 
     click_on "Add personal usage"
 
-    select "Unleaded Gas", from: "Source"
+    select "Unleaded Gas (gallons)", from: "Source"
     fill_in "Start date", with: '15/15/2015'
     fill_in "End date", with: '02/15/2015'
 
     click_on 'Add new usage'
 
     expect(page).to have_content("Amount used can't be blank")
-    expect(page).to have_content("Units can't be blank")
     expect(page).to have_content("Use reason can't be blank")
     expect(page).to have_content("Start date is not a valid date")
   end

@@ -9,7 +9,7 @@ describe CarbonSource do
   it { should have_valid(:conversion_factor).when(0.023, 1) }
   it { should_not have_valid(:conversion_factor).when(nil, "small") }
 
-  it { should validate_presence_of(:conversion_units) }
-  it { should have_valid(:conversion_units).when("tons CO2 / gallon") }
-  it { should_not have_valid(:conversion_units).when(nil, "") }
+  it { should validate_presence_of(:units) }
+  it { should have_valid(:units).when("gallons") }
+  it { should_not have_valid(:units).when(nil, "") }
 end

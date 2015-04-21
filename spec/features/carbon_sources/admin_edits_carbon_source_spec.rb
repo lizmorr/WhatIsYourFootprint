@@ -32,11 +32,11 @@ feature 'admin edits carbon sources', %{
     click_link "Edit #{source.name}"
 
     fill_in 'Conversion factor', with: 'small'
-    fill_in 'Conversion units', with: ''
+    fill_in 'Units', with: ''
     click_button 'Edit Source'
 
     expect(page).to have_content('Conversion factor must be a positive number')
-    expect(page).to have_content("Conversion units can't be blank")
+    expect(page).to have_content("Units can't be blank")
     expect(page).to have_field('Conversion factor', with: 'small')
   end
 

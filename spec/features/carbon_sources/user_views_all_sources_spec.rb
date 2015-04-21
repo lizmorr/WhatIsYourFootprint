@@ -11,8 +11,8 @@ feature 'user views all potential carbon sources', %{
     FactoryGirl.create(:carbon_source, name: 'Natural gas')
     detail_source = FactoryGirl.create(:carbon_source,
       name: 'Heating oil',
-      conversion_factor: 0.01213,
-      conversion_units: 'tons CO2/gallon',
+      conversion_factor: 22.4,
+      units: 'gallons',
 )
 
     visit carbon_sources_path
@@ -20,7 +20,7 @@ feature 'user views all potential carbon sources', %{
     expect(page).to have_content('Electricity')
 
     expect(page).to have_content('Heating oil')
-    expect(page).to have_content('Conversion: 0.01213 tons CO2/gallon')
+    expect(page).to have_content('Conversion: 22.4 lbs CO2 / gallon')
 
     expect(page).to have_content('Natural gas')
 

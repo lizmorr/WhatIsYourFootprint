@@ -14,10 +14,6 @@ describe Usage do
   it { should have_valid(:amount_used).when(3, 3.2) }
   it { should_not have_valid(:amount_used).when("three", nil) }
 
-  it { should validate_presence_of(:units) }
-  it { should have_valid(:units).when("gallons", "kWhs") }
-  it { should_not have_valid(:units).when("", nil, "thing") }
-
   it { should validate_presence_of(:start_date) }
   it { should have_valid(:start_date).when("01/02/2014", "12/02/2015") }
   it { should_not have_valid(:start_date).when("", nil, "13/13/2015") }
@@ -85,12 +81,12 @@ describe Usage do
         source = FactoryGirl.create(
           :carbon_source,
           name: "Heating Oil",
-          conversion_factor: 2
+          conversion_factor: 2,
+          units: "gallons",
         )
         usage = FactoryGirl.create(
           :usage,
           amount_used: 10,
-          units: "gallons",
           carbon_source: source
         )
         expect(usage.display_source_info_for_usage).

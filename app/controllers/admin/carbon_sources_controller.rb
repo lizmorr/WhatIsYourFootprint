@@ -8,7 +8,7 @@ module Admin
     end
 
     def create
-      @carbon_source = CarbonSource.new(new_carbon_source_params)
+      @carbon_source = CarbonSource.new(carbon_source_params)
       if @carbon_source.save
         redirect_to admin_carbon_sources_path,
           notice: "#{@carbon_source.name} added as carbon source"
@@ -25,7 +25,7 @@ module Admin
 
     def update
       @carbon_source = CarbonSource.find(params[:id])
-      if @carbon_source.update(edit_carbon_source_params)
+      if @carbon_source.update(carbon_source_params)
         redirect_to admin_carbon_sources_path,
           notice: "#{@carbon_source.name} updated!"
       else
@@ -36,14 +36,9 @@ module Admin
 
     protected
 
-    def new_carbon_source_params
+    def carbon_source_params
       params.require(:carbon_source).permit(:name, :conversion_factor,
-        :conversion_units, :category, :subcategory)
-    end
-
-    def edit_carbon_source_params
-      params.require(:carbon_source).permit(:conversion_factor,
-        :conversion_units, :category, :subcategory)
+        :units, :category, :subcategory)
     end
   end
 end

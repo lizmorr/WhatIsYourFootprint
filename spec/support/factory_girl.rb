@@ -13,8 +13,8 @@ FactoryGirl.define do
 
   factory :carbon_source do
     name 'Heating oil'
-    conversion_factor 0.01213
-    conversion_units 'tons CO2 / gallon'
+    conversion_factor 22
+    units 'gallons'
   end
 
   factory :use_reason do
@@ -23,7 +23,6 @@ FactoryGirl.define do
 
   factory :usage do
     amount_used 10
-    units "gallons"
     start_date "01/15/2015"
     end_date "02/15/2015"
     user

@@ -5,8 +5,8 @@
     <div class="small-12 columns">
       <%= f.label :carbon_source_id, "Source" %>
       <%= f.collection_select(:carbon_source_id,
-        CarbonSource.all, :id, :name,
-        include_blank: "Please choose a source") %>
+        CarbonSource.all, :id, :name_with_units,
+        prompt: "Please choose a source") %>
     </div>
   </div>
 
@@ -17,19 +17,10 @@
     </div>
 
     <div class="small-6 columns">
-      <%= f.label :units %>
-      <%= f.select :units,
-        Usage::UNITS,
-        include_blank: "Please choose your units" %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="small-12 columns">
       <%= f.label :use_reason_id, "Use reason" %>
       <%= f.collection_select(:use_reason_id,
         UseReason.all, :id, :name,
-        include_blank: "Please choose a use reason") %>
+        prompt: "Please choose a use reason") %>
     </div>
   </div>
 
