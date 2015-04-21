@@ -9,8 +9,8 @@ CarbonSource.create(
   conversion_units: "lbs / cubic foot"
 )
 CarbonSource.create(
-  name: "Fuel Oil",
-  conversion_factor: 22.61,
+  name: "Propane",
+  conversion_factor: 12.43,
   conversion_units: "lbs / gallon"
 )
 
