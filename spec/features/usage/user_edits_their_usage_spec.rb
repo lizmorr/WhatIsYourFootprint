@@ -10,12 +10,18 @@ feature 'user edits their usage', %{
     source = FactoryGirl.create(
       :carbon_source,
       name: "Heating Oil",
+      units: "gallons",
       conversion_factor: 2
     )
     user = FactoryGirl.create(:user)
-    usage = FactoryGirl.create(:usage, amount_used: 10,
-      start_date: "02/15/2015", end_date: "02/15/2015", units: "gallons",
-      carbon_source: source, user: user)
+    FactoryGirl.create(
+      :usage,
+      amount_used: 10,
+      start_date: "02/15/2015",
+      end_date: "02/15/2015",
+      carbon_source: source,
+      user: user
+    )
 
     sign_in_as(user)
     click_link "Edit this entry"
@@ -37,9 +43,14 @@ feature 'user edits their usage', %{
   scenario 'user edits usage with invalid information and fails' do
     source = FactoryGirl.create(:carbon_source, name: "Heating Oil")
     user = FactoryGirl.create(:user)
-    usage = FactoryGirl.create(:usage, amount_used: 10,
-      start_date: "02/15/2015", end_date: "02/15/2015", units: "gallons",
-      carbon_source: source, user: user)
+    FactoryGirl.create(
+      :usage,
+      amount_used: 10,
+      start_date: "02/15/2015",
+      end_date: "02/15/2015",
+      carbon_source: source,
+      user: user
+    )
 
     sign_in_as(user)
     click_link "Edit this entry"

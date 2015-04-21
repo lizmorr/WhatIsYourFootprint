@@ -14,12 +14,12 @@ feature 'admin adds new carbon sources', %{
 
     fill_in 'Name', with: "Heating oil"
     fill_in 'Conversion factor', with: 0.010213
-    fill_in 'Conversion units', with: 'tons CO2/gallon'
+    fill_in 'Units', with: 'gallons'
 
     click_on 'Add new source'
 
     expect(page).to have_content('Heating oil added as carbon source')
-    expect(page).to have_content('Conversion: 0.010213 tons CO2/gallon')
+    expect(page).to have_content('Conversion: 0.010213 lbs CO2 / gallon')
   end
 
 
@@ -34,7 +34,7 @@ feature 'admin adds new carbon sources', %{
 
     expect(page).to_not have_content('Heating oil')
     expect(page).to have_content("Conversion factor can't be blank")
-    expect(page).to have_content("Conversion units can't be blank")
+    expect(page).to have_content("Units can't be blank")
   end
 
   scenario 'non-admin user is unable to add new source' do

@@ -3,15 +3,12 @@ class Usage < ActiveRecord::Base
   belongs_to :carbon_source
   belongs_to :user
 
-  delegate :conversion_factor, to: :carbon_source
-
-  UNITS = ["gallons", "cubic feet", "kWhs"]
+  delegate :conversion_factor, :units, to: :carbon_source
 
   validates :user, presence: true
   validates :carbon_source, presence: true
   validates :use_reason, presence: true
   validates :amount_used, presence: true, numericality: true
-  validates :units, presence: true, inclusion: { in: UNITS }
   validates_date :start_date
   validates :start_date, presence: true
   validates_date :end_date, presence: true
