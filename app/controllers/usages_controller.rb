@@ -3,6 +3,7 @@ class UsagesController < ApplicationController
 
   def index
     @usages = Usage.user_usage(current_user).page(params[:page])
+    @total_emissions = Usage.user_total_emissions(current_user)
   end
 
   def new
