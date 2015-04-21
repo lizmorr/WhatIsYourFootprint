@@ -7,7 +7,11 @@ feature 'user edits their usage', %{
 } do
 
   scenario 'user successfully edits their entry' do
-    source = FactoryGirl.create(:carbon_source, name: "Heating Oil")
+    source = FactoryGirl.create(
+      :carbon_source,
+      name: "Heating Oil",
+      conversion_factor: 2
+    )
     user = FactoryGirl.create(:user)
     usage = FactoryGirl.create(:usage, amount_used: 10,
       start_date: "02/15/2015", end_date: "02/15/2015", units: "gallons",
@@ -24,6 +28,8 @@ feature 'user edits their usage', %{
     expect(page).to have_content("Usage updated!")
     expect(page).to have_content("15.0 gallons Heating Oil")
     expect(page).to_not have_content("10.0 gallons Heating Oil")
+    expect(page).to have_content("Emissions: 30.0 lbs CO2")
+    expect(page).to_not have_content("Emissions: 20 lbs CO2")
     expect(page).to have_content("01/15/2015 - 02/15/2015")
     expect(page).to_not have_content("02/15/2015 - 02/15/2015")
   end

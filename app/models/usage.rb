@@ -3,6 +3,8 @@ class Usage < ActiveRecord::Base
   belongs_to :carbon_source
   belongs_to :user
 
+  delegate :conversion_factor, to: :carbon_source
+
   UNITS = ["gallons", "cubic feet", "kWhs"]
 
   validates :user, presence: true
@@ -15,13 +17,21 @@ class Usage < ActiveRecord::Base
   validates_date :end_date, presence: true
   validates :end_date, presence: true
 
-  def time_period
+  def number_days
+    if start_date == end_date
+      1
+    else
+      (end_date - start_date).to_i
+    end
+  end
+
+  def display_time_period
     start_date = self.start_date.strftime("%m/%d/%Y")
     end_date = self.end_date.strftime("%m/%d/%Y")
     "#{start_date} - #{end_date}"
   end
 
-  def all_source_info
+  def display_source_info_for_usage
     "#{amount_used} #{units} #{carbon_source.name}"
   end
 
@@ -31,5 +41,21 @@ class Usage < ActiveRecord::Base
 
   def changeable_by?(user)
     user == self.user
+  end
+
+  def self.user_usage(user)
+    where(user: user).order(created_at: :desc)
+  end
+
+  def emission
+    amount_used * conversion_factor
+  end
+
+  def daily_emission
+    emission / number_days
+  end
+
+  def display_emission
+    "#{emission} lbs CO2"
   end
 end

@@ -26,16 +26,18 @@ feature 'user views their usage', %{
 
     expect(page).to have_content("#{user.email}'s Carbon Usage")
 
-    expect(page).to have_content("#{newer_source.all_source_info}")
-    expect(page).to have_content("#{newer_source.time_period}")
+    expect(page).to have_content(
+      "#{newer_source.display_source_info_for_usage}")
+    expect(page).to have_content("#{newer_source.display_time_period}")
     expect(page).to have_content("#{newer_source.category}")
 
-    expect(page).to have_content("#{older_source.all_source_info}")
-    expect(page).to have_content("#{older_source.time_period}")
+    expect(page).to have_content(
+      "#{older_source.display_source_info_for_usage}")
+    expect(page).to have_content("#{older_source.display_time_period}")
     expect(page).to have_content("#{older_source.category}")
 
-    expect(page.body.index(older_source.all_source_info) >
-      page.body.index(newer_source.all_source_info))
+    expect(page.body.index(older_source.display_source_info_for_usage) >
+      page.body.index(newer_source.display_source_info_for_usage))
   end
 
   scenario 'user only sees 10 usage entries per page' do
@@ -70,9 +72,9 @@ feature 'user views their usage', %{
 
     sign_in_as(another_user)
 
-    expect(page).to have_content("#{another_user.email}'s Carbon Usage")
-    expect(page).to_not have_content("#{source.all_source_info}")
-    expect(page).to_not have_content("#{source.time_period}")
+    expect(page).to have_content("person2@test.com's Carbon Usage")
+    expect(page).to_not have_content("#{source.display_source_info_for_usage}")
+    expect(page).to_not have_content("#{source.display_time_period}")
     expect(page).to_not have_content("#{source.category}")
   end
 end

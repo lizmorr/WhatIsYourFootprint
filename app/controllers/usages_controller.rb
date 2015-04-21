@@ -2,9 +2,7 @@ class UsagesController < ApplicationController
   before_action :authenticate_user
 
   def index
-    @usages = Usage.where(user: current_user).
-      order(created_at: :desc).
-      page(params[:page])
+    @usages = Usage.user_usage(current_user).page(params[:page])
   end
 
   def new
