@@ -1,11 +1,16 @@
 <%= rendor "share/errors" if @errors %>
 <div class="row">
   <div class="small-12 columns">
-    <h1><%= "#{current_user.email}'s Carbon Usage" %></h1>
+    <h1><%= "#{current_user.email}'s Emissions Overview" %></h1>
+  </div>
+</div>
+<div class="row">
+  <div class="small-4 columns">
+    <h3>Entry Overview</h3>
     <% if @usages %>
       <% @usages.each do |usage| %>
         <div class="panel hide-for-small">
-          <h3><%= usage.display_source_info_for_usage %></h3>
+          <h4><%= usage.display_source_info_for_usage %></h4>
           <h5>Emissions: <span class="subheader"> <%= "#{usage.display_emission}" %>
           <h5>Time Period: <span class="subheader"><%= "#{usage.display_time_period}" %></span></h5>
           <h5>Use Reason: <span class="subheader"><%= "#{usage.category}" %></span></h5>
@@ -19,7 +24,19 @@
     <% end %>
 
     <%= paginate @usages, remote: true %>
+  </div>
 
-    <%= link_to "Add personal usage", new_usage_path %>
+  <div class="small-8 columns">
+    <div class="row">
+      <div class="small-12 columns">
+        <h2>Total Emissions:</h2>
+        <h3><%= "#{@total_emissions} lbs CO2" %></h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-12 columns">
+        <%= link_to "Add personal usage", new_usage_path %>
+      </div>
+    </div>
   </div>
 </div>

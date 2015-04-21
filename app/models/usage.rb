@@ -35,6 +35,10 @@ class Usage < ActiveRecord::Base
     "#{amount_used} #{units} #{carbon_source.name}"
   end
 
+  def display_emission
+    "#{emission} lbs CO2"
+  end
+
   def category
     use_reason.name
   end
@@ -51,11 +55,15 @@ class Usage < ActiveRecord::Base
     amount_used * conversion_factor
   end
 
+  def self.user_total_emissions(user)
+    usages = Usage.user_usage(user)
+    total_emissions = 0
+    usages.each { |usage| total_emissions += usage.emission }
+    total_emissions
+  end
+
   def daily_emission
     emission / number_days
   end
 
-  def display_emission
-    "#{emission} lbs CO2"
-  end
 end
