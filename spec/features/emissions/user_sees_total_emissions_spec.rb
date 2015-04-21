@@ -9,8 +9,14 @@ feature 'user views their usage', %{
   scenario 'user logs in and sees their total emissions' do
     user = FactoryGirl.create(:user)
     source = FactoryGirl.create(:carbon_source, conversion_factor: 2)
-    FactoryGirl.create(:usage, user: user, carbon_source: source, amount_used: 14)
-    FactoryGirl.create(:usage, user: user, carbon_source: source, amount_used: 10)
+    FactoryGirl.create(:usage,
+      user: user,
+      carbon_source: source,
+      amount_used: 14)
+    FactoryGirl.create(:usage,
+      user: user,
+      carbon_source: source,
+      amount_used: 10)
 
     sign_in_as(user)
 
