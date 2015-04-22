@@ -16,7 +16,7 @@ feature 'admin edits carbon sources', %{
     click_link "Edit #{source.name}"
 
     fill_in 'Conversion factor', with: 0.02
-    click_button 'Edit Source'
+    click_button 'Edit source'
 
     expect(page).to have_content("#{source.name} updated!")
     expect(page).to have_content('Conversion: 0.02')
@@ -33,7 +33,7 @@ feature 'admin edits carbon sources', %{
 
     fill_in 'Conversion factor', with: 'small'
     fill_in 'Units', with: ''
-    click_button 'Edit Source'
+    click_button 'Edit source'
 
     expect(page).to have_content('Conversion factor must be a positive number')
     expect(page).to have_content("Units can't be blank")

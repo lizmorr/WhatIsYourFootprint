@@ -1,7 +1,7 @@
 class CarbonSource < ActiveRecord::Base
   has_many :usages
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :conversion_factor, presence: true, numericality: {
     greater_than: 0, message: "must be a positive number"
   }

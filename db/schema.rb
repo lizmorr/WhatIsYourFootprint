@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150421160425) do
+ActiveRecord::Schema.define(version: 20150422213357) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20150421160425) do
     t.float  "conversion_factor", null: false
     t.string "units",             null: false
   end
+
+  add_index "carbon_sources", ["name"], name: "index_carbon_sources_on_name", unique: true, using: :btree
 
   create_table "usages", force: :cascade do |t|
     t.integer  "user_id",          null: false

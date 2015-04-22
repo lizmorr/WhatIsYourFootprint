@@ -9,14 +9,14 @@
   <div class="small-8 columns">
     <h2>Use Reasons</h2>
     <% if @use_reasons %>
-      <div class="row" id="use_reasons">
-        <div class="small-12 columns">
-          <% @use_reasons.each do |reason| %>
-              <h2 class="subheader"><%= reason.name %></h2>
-              <%= link_to "Edit #{reason.name}", edit_admin_use_reason_path(reason) %>
-          <% end %>
+      <% @use_reasons.each do |reason| %>
+        <div class="panel hide-for-small">
+          <h3><%= reason.name %></h3>
+          <h6><small>
+            <%= link_to "Edit #{reason.name}", edit_admin_use_reason_path(reason) %>
+          </small></div>
         </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 </div>
