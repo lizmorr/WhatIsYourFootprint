@@ -4,17 +4,19 @@ $(function() {
 
   var emissionsSummary = "http://localhost:3000/usages.json";
   $.getJSON(emissionsSummary, function (emissionsSummary) {
+
+    dataset = emissionsSummary["Data"];
     var xScale = d3.scale.ordinal()
-                   .domain(d3.range(emissionsSummary.length))
+                   .domain(d3.range(dataset.length))
                    .rangeRoundBands([0, w], .05);
 
     var yScale = d3.scale.linear()
-                   .domain([0, d3.max(emissionsSummary, function(d) {
-                     return d.value;
+                   .domain([0, d3.max(dataset, function(d) {
+                     return d.Value;
                    })])
                    .range([0,h]);
     var key = function(d) {
-      return d.key;
+      return d.Date;
     };
 
     var svg = d3.select("#chart")
@@ -22,37 +24,35 @@ $(function() {
                 .attr("width", w)
                 .attr("height", h);
 
-    console.log(emissionsSummary);
-
     svg.selectAll("rect")
-       .data(emissionsSummary, key)
+       .data(dataset, Date)
        .enter()
        .append("rect")
        .attr("x", function (d, i) {
          return xScale(i);
        })
        .attr("y", function(d) {
-         return h - yScale(d.value);
+         return h - yScale(d.Value);
        })
        .attr("width", xScale.rangeBand())
        .attr("height", function(d) {
-         return yScale(d.value)
+         return yScale(d.Value)
        })
        .attr("fill", "teal")
 
     svg.selectAll("text")
-       .data(emissionsSummary, key)
+       .data(dataset, Date)
        .enter()
        .append("text")
        .text(function(d) {
-         return d.value;
+         return d.Value;
        })
        .attr("text-anchor", "middle")
        .attr("x", function (d, i) {
          return xScale(i) + xScale.rangeBand() / 2;
        })
        .attr("y", function (d) {
-         return h - yScale(d.value) + 14;
+         return h - yScale(d.Value) + 14;
        })
        .attr("font-family", "sans-serif")
        .attr("font-size", "11px")
