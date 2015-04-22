@@ -9,7 +9,7 @@ class UsagesController < ApplicationController
         render :index
       }
       format.json {
-        render json: Usage.daily_emissions_summary(current_user,"April 15th 2015","April 20th 2015").to_json
+        render json: Usage.daily_emissions_summary(current_user, 30.days.ago, Date.today).to_json
       }
     end
   end

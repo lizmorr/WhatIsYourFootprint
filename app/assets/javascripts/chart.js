@@ -43,8 +43,6 @@ $(function() {
        })
        .attr("fill", "teal")
 
-    debugger;
-    
     svg.selectAll("text")
        .data(dataset)
        .enter()
