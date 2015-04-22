@@ -6,6 +6,9 @@ $(function() {
   $.getJSON(emissionsSummary, function (emissionsSummary) {
 
     dataset = emissionsSummary["Data"];
+
+    console.log(dataset);
+
     var xScale = d3.scale.ordinal()
                    .domain(d3.range(dataset.length))
                    .rangeRoundBands([0, w], .05);
@@ -25,7 +28,7 @@ $(function() {
                 .attr("height", h);
 
     svg.selectAll("rect")
-       .data(dataset, Date)
+       .data(dataset)
        .enter()
        .append("rect")
        .attr("x", function (d, i) {
@@ -40,8 +43,10 @@ $(function() {
        })
        .attr("fill", "teal")
 
+    debugger;
+    
     svg.selectAll("text")
-       .data(dataset, Date)
+       .data(dataset)
        .enter()
        .append("text")
        .text(function(d) {
