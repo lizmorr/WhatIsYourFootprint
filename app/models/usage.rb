@@ -18,7 +18,7 @@ class Usage < ActiveRecord::Base
     if start_date == end_date
       1
     else
-      (end_date - start_date).to_i
+      (end_date - start_date).to_i + 1
     end
   end
 
@@ -52,6 +52,10 @@ class Usage < ActiveRecord::Base
     amount_used * conversion_factor
   end
 
+  def daily_emission
+    emission / number_days
+  end
+
   def self.user_total_emissions(user)
     usages = Usage.user_usage(user)
     total_emissions = 0
@@ -59,8 +63,27 @@ class Usage < ActiveRecord::Base
     total_emissions
   end
 
-  def daily_emission
-    emission / number_days
+  def self.usages_by_date(user,date)
+    Usage.where("user_id = ? AND start_date <= ? AND end_date >= ?", user, date, date)
   end
 
+  def self.total_daily_emissions(user, date)
+    usages = Usage.usages_by_date(user, date)
+    daily_total = 0
+    usages.each  { |usage| daily_total += usage.daily_emission }
+    daily_total
+  end
+
+  def self.daily_emissions_summary(user, start_date, end_date)
+    start_date = Date.parse(start_date)
+    end_date = Date.parse(end_date)
+    daily_emissions_hash = {"Type" => "Daily Emissions", "Data" => []}
+    start_date.step(end_date).each do |date|
+      daily_emissions_hash["Data"] << {
+        "Date" => date.strftime("%m/%d/%Y"),
+        "Value" => total_daily_emissions(user, date)
+      }
+    end
+    daily_emissions_hash
+  end
 end

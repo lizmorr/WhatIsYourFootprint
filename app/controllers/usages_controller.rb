@@ -2,8 +2,16 @@ class UsagesController < ApplicationController
   before_action :authenticate_user
 
   def index
-    @usages = Usage.user_usage(current_user).page(params[:page])
-    @total_emissions = Usage.user_total_emissions(current_user)
+    respond_to do |format|
+      format.html {
+        @usages = Usage.user_usage(current_user).page(params[:page])
+        @total_emissions = Usage.user_total_emissions(current_user)
+        render :index
+      }
+      format.json {
+        render json: Usage.daily_emissions_summary(current_user,"April 15th 2015","April 16th 2015").to_json
+      }
+    end
   end
 
   def new
