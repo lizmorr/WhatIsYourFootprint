@@ -5,13 +5,11 @@ $(function() {
   var emissionsSummary = "http://localhost:3000/usages.json";
   $.getJSON(emissionsSummary, function (emissionsSummary) {
 
-    dataset = emissionsSummary["Data"];
-
-    console.log(dataset);
+    var dataset = emissionsSummary.Data;
 
     var xScale = d3.scale.ordinal()
                    .domain(d3.range(dataset.length))
-                   .rangeRoundBands([0, w], .05);
+                   .rangeRoundBands([0, w], 0.05);
 
     var yScale = d3.scale.linear()
                    .domain([0, d3.max(dataset, function(d) {
@@ -39,9 +37,9 @@ $(function() {
        })
        .attr("width", xScale.rangeBand())
        .attr("height", function(d) {
-         return yScale(d.Value)
+         return yScale(d.Value);
        })
-       .attr("fill", "teal")
+       .attr("fill", "teal");
 
     svg.selectAll("text")
        .data(dataset)
