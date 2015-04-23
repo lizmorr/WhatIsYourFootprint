@@ -117,7 +117,7 @@ describe Usage do
           end_date: "03/29/2015",
           amount_used: 25
         )
-        expect(Usage.total_daily_emissions(user)).to eq 27.0
+        expect(Usage.total_daily_emissions(user, "03/15/2015")).to eq 27.0
       end
     end
   end
