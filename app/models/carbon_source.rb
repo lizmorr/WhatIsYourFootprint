@@ -12,8 +12,8 @@ class CarbonSource < ActiveRecord::Base
   end
 
   def conversion_units
-    if units == "feet"
-      "lbs CO2 / foot"
+    if units == "cubic feet"
+      "lbs CO2 / cubic foot"
     else
       "lbs CO2 / #{units.chop}"
     end
