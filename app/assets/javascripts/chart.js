@@ -16,9 +16,11 @@ $(function() {
 
     var dataset = emissionsSummary.Data;
 
-    var xScale = d3.scale.ordinal()
-                   .domain(d3.range(dataset.length))
-                   .rangeRoundBands([0, w], 0.05);
+    var printDate = d3.time.format("%m/%d");
+
+    var xScale = d3.time.scale()
+                   .domain([new Date(dataset[0].Date), d3.time.day.offset(new Date(dataset[dataset.length-1].Date),8)])
+                   .rangeRound([0, w]);
 
     var yScale = d3.scale.linear()
                    .domain([0, d3.max(dataset, function(d) {
@@ -50,7 +52,7 @@ $(function() {
        .attr("y", function(d) {
          return h - yScale(d.Value);
        })
-       .attr("width", xScale.rangeBand())
+       .attr("width", (w / dataset.length))
        .attr("height", function(d) {
          return yScale(d.Value);
        })
@@ -70,7 +72,7 @@ $(function() {
        })
        .attr("text-anchor", "middle")
        .attr("x", function (d, i) {
-         return xScale(i) + xScale.rangeBand() / 2;
+         return xScale(i) + (w / dataset.length) / 2;
        })
        .attr("y", function (d) {
          return h - yScale(d.Value) + 14;
