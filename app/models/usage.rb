@@ -64,7 +64,10 @@ class Usage < ActiveRecord::Base
   end
 
   def self.usages_by_date(user,date)
-    Usage.where("user_id = ? AND start_date <= ? AND end_date >= ?", user, date, date)
+    Usage.where("user_id = ? AND start_date <= ? AND end_date >= ?",
+      user,
+      date,
+      date)
   end
 
   def self.total_daily_emissions(user, date)

@@ -3,14 +3,18 @@ class UsagesController < ApplicationController
 
   def index
     respond_to do |format|
-      format.html {
+      format.html do
         @usages = Usage.user_usage(current_user).page(params[:page])
         @total_emissions = Usage.user_total_emissions(current_user)
         render :index
-      }
-      format.json {
-        render json: Usage.daily_emissions_summary(current_user, 30.days.ago, Date.today).to_json
-      }
+      end
+      format.json do
+        render json: Usage.daily_emissions_summary(
+          current_user,
+          30.days.ago,
+          Date.today
+        ).to_json
+      end
     end
   end
 
