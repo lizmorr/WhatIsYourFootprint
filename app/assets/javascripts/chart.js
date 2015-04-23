@@ -1,9 +1,18 @@
 $(function() {
-  var w = 600;
-  var h = 250;
 
   var emissionsSummary = "http://localhost:3000/usages.json";
   $.getJSON(emissionsSummary, function (emissionsSummary) {
+
+    var margin = {
+      top: 0,
+      right: 0,
+      bottom: 60,
+      left: 0
+    };
+
+    var w = 600 - margin.left - margin.right;
+    var h = 250 - margin.top - margin.bottom;
+    var padding = 40;
 
     var dataset = emissionsSummary.Data;
 
@@ -15,15 +24,21 @@ $(function() {
                    .domain([0, d3.max(dataset, function(d) {
                      return d.Value;
                    })])
-                   .range([0,h]);
+                   .range([h - padding, padding]);
+
     var key = function(d) {
       return d.Date;
     };
 
     var svg = d3.select("#chart")
                 .append("svg")
-                .attr("width", w)
-                .attr("height", h);
+                .attr("width", w + margin.left + margin.right)
+                .attr("height", h + margin.top + margin.bottom )
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    var xAxis = d3.svg.axis()
+                  .scale(xScale)
+                  .orient("bottom");
 
     svg.selectAll("rect")
        .data(dataset)
@@ -40,6 +55,11 @@ $(function() {
          return yScale(d.Value);
        })
        .attr("fill", "teal");
+
+    svg.append("g")
+       .attr("class", "axis")
+       .attr("transform", "translate(0," + (h + 5) + ")")
+       .call(xAxis);
 
     svg.selectAll("text")
        .data(dataset)
