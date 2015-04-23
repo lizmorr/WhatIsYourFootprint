@@ -57,7 +57,7 @@ describe Usage do
           start_date: "02/15/2015",
           end_date: "02/20/2015"
         )
-        expect(usage.number_days).to eq 5
+        expect(usage.number_days).to eq 6
       end
     end
   end
@@ -91,6 +91,33 @@ describe Usage do
         )
         expect(usage.display_source_info_for_usage).
           to eq "10.0 gallons Heating Oil"
+      end
+    end
+  end
+
+  describe 'total_daily_emissions' do
+    context 'user has emissions in the time period ' do
+      it 'returns 27 lbs' do
+        source = FactoryGirl.create(:carbon_source, conversion_factor: 3)
+        source2 = FactoryGirl.create(:carbon_source, conversion_factor: 15)
+        user = FactoryGirl.create(:user)
+        FactoryGirl.create(
+          :usage,
+          carbon_source: source,
+          user: user,
+          start_date: "03/01/2015",
+          end_date: "03/15/2015",
+          amount_used: 10
+        )
+        FactoryGirl.create(
+          :usage,
+          carbon_source: source2,
+          user: user,
+          start_date: "03/15/2015",
+          end_date: "03/29/2015",
+          amount_used: 25
+        )
+        expect(Usage.total_daily_emissions(user, "03/15/2015")).to eq 27.0
       end
     end
   end

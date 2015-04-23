@@ -12,7 +12,7 @@ FactoryGirl.define do
   end
 
   factory :carbon_source do
-    name 'Heating oil'
+    sequence(:name) { |n| "Heating oil #{n}" }
     conversion_factor 22
     units 'gallons'
   end

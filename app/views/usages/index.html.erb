@@ -1,4 +1,6 @@
 <%= rendor "share/errors" if @errors %>
+
+
 <div class="row">
   <div class="small-12 columns">
     <h1><%= "#{current_user.email}'s Emissions Overview" %></h1>
@@ -31,6 +33,13 @@
       <div class="small-12 columns">
         <h2>Total Emissions:</h2>
         <h3><%= "#{@total_emissions} lbs CO2" %></h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-12 columns">
+        <div id="chart">
+          <h3>Emissions for last 30 days</h3>
+        </div>
       </div>
     </div>
     <div class="row">
