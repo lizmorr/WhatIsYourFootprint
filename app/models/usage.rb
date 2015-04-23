@@ -59,7 +59,7 @@ class Usage < ActiveRecord::Base
   def self.user_total_emissions(user)
     usages = Usage.user_usage(user)
     total_emissions = 0
-    usages.each {|usage| total_emissions += usage.emission}
+    usages.each { |usage| total_emissions += usage.emission }
     total_emissions
   end
 
@@ -73,7 +73,7 @@ class Usage < ActiveRecord::Base
   def self.total_daily_emissions(user, date)
     usages = Usage.usages_by_date(user, date)
     daily_total = 0
-    usages.each  {|usage| daily_total += usage.daily_emission}
+    usages.each { |usage| daily_total += usage.daily_emission }
     daily_total
   end
 
