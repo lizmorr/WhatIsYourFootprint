@@ -14,9 +14,10 @@
           <h3><%= reason.name %></h3>
           <h6><small>
             <%= link_to "Edit #{reason.name}", edit_admin_use_reason_path(reason) %>
-          </small></div>
-        </div>
+          </small></h6>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>

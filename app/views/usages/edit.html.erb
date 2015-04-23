@@ -17,8 +17,7 @@
       <%= f.text_field :amount_used %>
     </div>
 
-  <div class="row">
-    <div class="small-12 columns">
+    <div class="small-6 columns">
       <%= f.label :use_reason_id, "Use reason" %>
       <%= f.collection_select(:use_reason_id,
         UseReason.all, :id, :name,
