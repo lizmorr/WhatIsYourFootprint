@@ -80,7 +80,7 @@ class Usage < ActiveRecord::Base
   def self.daily_emissions_summary(user, start_date, end_date)
     start_date = Date.parse(start_date.to_s)
     end_date = Date.parse(end_date.to_s)
-    daily_emissions_hash = {"Type" => "Daily Emissions", "Data" => [] }
+    daily_emissions_hash = { "Type" => "Daily Emissions", "Data" => [] }
     start_date.step(end_date).each do |date|
       daily_emissions_hash["Data"] << {
         "Date" => date.strftime("%m/%d/%Y"),
