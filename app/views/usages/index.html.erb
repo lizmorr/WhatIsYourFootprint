@@ -13,9 +13,9 @@
       <ul class="accordion" data-accordion>
         <% @usages.each do |usage| %>
           <li class="accordion-navigation">
-            <%= link_to "" %>
-          <div class="panel hide-for-small">
-            <h4><%= usage.display_source_info_for_usage %></h4>
+            <%= link_to "Emissions: #{usage.display_emission}", "#panel#{}{usage.id}" %>
+            
+            <h4>Source Info: <%= usage.display_source_info_for_usage %></h4>
             <h5>Emissions: <span class="subheader"> <%= "#{usage.display_emission}" %>
             <h5>Time Period: <span class="subheader"><%= "#{usage.display_time_period}" %></span></h5>
             <h5>Use Reason: <span class="subheader"><%= "#{usage.category}" %></span></h5>
