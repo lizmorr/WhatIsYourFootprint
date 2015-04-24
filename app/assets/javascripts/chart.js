@@ -33,15 +33,20 @@ $(function() {
     };
 
     var svg = d3.select("#chart")
-                .append("svg")
-                .attr("width", w + margin.left + margin.right)
-                .attr("height", h + margin.top + margin.bottom )
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        .append("svg")
+        .attr("width", w + margin.left + margin.right)
+        .attr("height", h + margin.top + margin.bottom )
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     var xAxis = d3.svg.axis()
-                  .scale(xScale)
-                  .orient("bottom")
-                  .ticks(d3.time.sunday);
+        .scale(xScale)
+        .orient("bottom")
+        .ticks(d3.time.sunday);
+
+    var yAxis = d3.svg.axis()
+        .scale(xScale)
+        .orient("left")
+        .tickPadding(8);
 
      svg.selectAll("rect")
         .data(dataset)
@@ -63,6 +68,10 @@ $(function() {
         .attr("class", "axis")
         .attr("transform", "translate(0," + (h + 5) + ")")
         .call(xAxis);
+     svg.append("g")
+        .attr("class", "axis")
+        .call(yAxis);
+
 
      svg.selectAll("text")
         .data(dataset)
