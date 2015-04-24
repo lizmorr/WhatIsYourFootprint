@@ -18,9 +18,15 @@
               <h5 class="subheader"><%="#{usage.display_emission}" %></h5>
             <% end %>
             <div id=<%= "panel#{usage.id}" %> class="content">
-            <h5>Source Info: <%= usage.display_source_info_for_usage %></h5>
-            <h5>Use Reason: <span class="subheader"><%= "#{usage.category}" %></span></h5>
-            <h5>Notes: <span class="subheader"><%= "#{usage.notes}" %></span></h5>
+            <h5>Source Info: <span class="subheader">
+              <%= usage.display_source_info_for_usage %>
+            </span></h5>
+            <h5>Use Reason: <span class="subheader">
+              <%= "#{usage.category}" %>
+            </span></h5>
+            <h5>Notes: <span class="subheader">
+              <%= "#{usage.notes}" %>
+            </span></h5>
             <h6><small>
               <%= link_to "Edit this entry", edit_usage_path(usage) %>
               <%= link_to "Delete this entry", usage_path(usage), method: :delete %>
