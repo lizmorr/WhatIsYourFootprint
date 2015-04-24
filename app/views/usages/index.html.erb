@@ -13,11 +13,12 @@
       <ul class="accordion" data-accordion>
         <% @usages.each do |usage| %>
           <li class="accordion-navigation">
-            <%= link_to "Emissions: #{usage.display_emission}", "#panel#{}{usage.id}" %>
-            
-            <h4>Source Info: <%= usage.display_source_info_for_usage %></h4>
-            <h5>Emissions: <span class="subheader"> <%= "#{usage.display_emission}" %>
-            <h5>Time Period: <span class="subheader"><%= "#{usage.display_time_period}" %></span></h5>
+            <%= link_to "#panel#{usage.id}", title: "Total Usage for time" do %>
+              <h5><%= "#{usage.display_time_period}:" %></h5>
+              <h5 class="subheader"><%="#{usage.display_emission}" %></h5>
+            <% end %>
+            <div id=<%= "panel#{usage.id}" %> class="content">
+            <h5>Source Info: <%= usage.display_source_info_for_usage %></h5>
             <h5>Use Reason: <span class="subheader"><%= "#{usage.category}" %></span></h5>
             <h5>Notes: <span class="subheader"><%= "#{usage.notes}" %></span></h5>
             <h6><small>
@@ -25,6 +26,7 @@
               <%= link_to "Delete this entry", usage_path(usage), method: :delete %>
             </small></h6>
           </div>
+        </li>
         <% end  %>
       </ul>
     <% end %>
