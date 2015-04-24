@@ -45,7 +45,7 @@ class Usage < ActiveRecord::Base
   end
 
   def self.user_usage(user)
-    where(user: user).order(created_at: :desc)
+    where(user: user).order(end_date: :desc, start_date: :desc)
   end
 
   def emission
