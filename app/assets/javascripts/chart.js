@@ -1,5 +1,4 @@
 $(function() {
-
     var emissionsSummary = '/usages.json';
     $.getJSON(emissionsSummary, function (emissionsSummary) {
         var data = emissionsSummary.Data;
@@ -58,6 +57,5 @@ $(function() {
         svg.append('g')
           .attr('class', 'y axis')
           .call(yAxis);
-
   });
 });

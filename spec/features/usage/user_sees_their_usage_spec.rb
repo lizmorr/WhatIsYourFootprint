@@ -10,16 +10,17 @@ feature 'user views their usage', %{
     user = FactoryGirl.create(:user)
     heating_oil = FactoryGirl.create(:carbon_source, name: "Heating Oil")
     electricity = FactoryGirl.create(:carbon_source, name: "Electricity")
+    newer_source = FactoryGirl.create(
+      :usage,
+      user: user,
+      carbon_source: electricity,
+      end_date: 1.days.ago
+    )
     older_source = FactoryGirl.create(
       :usage,
       user: user,
       carbon_source: heating_oil,
-      created_at: 5.days.ago
-    )
-    newer_source = FactoryGirl.create(
-      :usage,
-      user: user,
-      carbon_source: electricity
+      end_date: 5.days.ago
     )
 
     sign_in_as(user)
