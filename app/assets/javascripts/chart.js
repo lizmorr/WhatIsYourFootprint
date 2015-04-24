@@ -2,7 +2,7 @@ $(function() {
   var w = 600;
   var h = 250;
 
-  var emissionsSummary = "http://localhost:3000/usages.json";
+  var emissionsSummary = "/usages.json";
   $.getJSON(emissionsSummary, function (emissionsSummary) {
 
     var dataset = emissionsSummary.Data;
