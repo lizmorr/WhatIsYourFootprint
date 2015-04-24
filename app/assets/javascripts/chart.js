@@ -19,8 +19,8 @@ $(function() {
     var printDate = d3.time.format("%m/%d");
 
     var xScale = d3.time.scale()
-                   .domain([new Date(dataset[0].Date), d3.time.day.offset(new Date(dataset[dataset.length-1].Date),8)])
-                   .rangeRound([0, w]);
+                   .domain([new Date(dataset[0].Date), d3.time.day.offset(new Date(dataset[dataset.length-1].Date),1)])
+                   .rangeRound([0, w - margin.left - margin.right]);
 
     var yScale = d3.scale.linear()
                    .domain([0, d3.max(dataset, function(d) {
@@ -48,7 +48,7 @@ $(function() {
         .enter()
         .append("rect")
         .attr("x", function (d) {
-          return d.Date;
+          return xScale(new Date(d.Date));
         })
         .attr("y", function(d) {
           return h - yScale(d.Value);
