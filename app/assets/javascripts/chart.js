@@ -1,6 +1,6 @@
 $(function() {
 
-    var emissionsSummary = "http://localhost:3000/usages.json";
+    var emissionsSummary = '/usages.json';
     $.getJSON(emissionsSummary, function (emissionsSummary) {
         var data = emissionsSummary.Data;
 
@@ -9,7 +9,8 @@ $(function() {
             height = 500;
 
         var x = d3.time.scale()
-            .domain([new Date(data[0].Date), d3.time.day.offset(new Date(data[data.length - 1].Date), 1)])
+            .domain([new Date(data[0].Date),
+                d3.time.day.offset(new Date(data[data.length - 1].Date), 1)])
             .rangeRound([0, width - margin.left - margin.right]);
 
         var y = d3.scale.linear()
