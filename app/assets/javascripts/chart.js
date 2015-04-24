@@ -40,46 +40,46 @@ $(function() {
 
     var xAxis = d3.svg.axis()
                   .scale(xScale)
-                  .orient("bottom");
+                  .orient("bottom")
+                  .ticks(d3.time.sunday);
 
-    svg.selectAll("rect")
-       .data(dataset)
-       .enter()
-       .append("rect")
-       .attr("x", function (d, i) {
-         return xScale(i);
-       })
-       .attr("y", function(d) {
-         return h - yScale(d.Value);
-       })
-       .attr("width", (w / dataset.length))
-       .attr("height", function(d) {
-         return yScale(d.Value);
-       })
-       .attr("fill", "teal");
+     svg.selectAll("rect")
+        .data(dataset)
+        .enter()
+        .append("rect")
+        .attr("x", function (d, i) {
+          return xScale(i) + xScale(Date(d.time));
+        })
+        .attr("y", function(d) {
+          return h - yScale(d.Value);
+        })
+        .attr("width", (w / dataset.length))
+        .attr("height", function(d) {
+          return yScale(d.Value);
+        })
+        .attr("fill", "teal");
 
-    svg.append("g")
-       .attr("class", "axis")
-       .attr("transform", "translate(0," + (h + 5) + ")")
-       .call(xAxis);
+     svg.append("g")
+        .attr("class", "axis")
+        .attr("transform", "translate(0," + (h + 5) + ")")
+        .call(xAxis);
 
-    svg.selectAll("text")
-       .data(dataset)
-       .enter()
-       .append("text")
-       .text(function(d) {
-         return d.Value;
-       })
-       .attr("text-anchor", "middle")
-       .attr("x", function (d, i) {
-         return xScale(i) + (w / dataset.length) / 2;
-       })
-       .attr("y", function (d) {
-         return h - yScale(d.Value) + 14;
-       })
-       .attr("font-family", "sans-serif")
-       .attr("font-size", "11px")
-       .attr("fill", "white");
-
+     svg.selectAll("text")
+        .data(dataset)
+        .enter()
+        .append("text")
+        .text(function(d) {
+          return d.Value;
+        })
+        .attr("text-anchor", "middle")
+        .attr("x", function (d, i) {
+          return xScale(i) + (w / dataset.length) / 2;
+        })
+        .attr("y", function (d) {
+          return h - yScale(d.Value) + 14;
+        })
+        .attr("font-family", "sans-serif")
+        .attr("font-size", "11px")
+        .attr("fill", "white");
   });
 });
