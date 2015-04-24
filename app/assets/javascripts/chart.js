@@ -1,63 +1,63 @@
 $(function() {
-  var w = 600;
-  var h = 250;
 
-  var emissionsSummary = "http://localhost:3000/usages.json";
-  $.getJSON(emissionsSummary, function (emissionsSummary) {
+    var emissionsSummary = '/usages.json';
+    $.getJSON(emissionsSummary, function (emissionsSummary) {
+        var data = emissionsSummary.Data;
 
-    var dataset = emissionsSummary.Data;
+        var margin = {top: 10, right: 40, bottom: 40, left:40},
+            w = 600,
+            h = 500;
 
-    var xScale = d3.scale.ordinal()
-                   .domain(d3.range(dataset.length))
-                   .rangeRoundBands([0, w], 0.05);
+        var x = d3.time.scale()
+            .domain([new Date(data[0].Date),
+                d3.time.day.offset(new Date(data[data.length - 1].Date), 1)])
+            .rangeRound([0, w - margin.left - margin.right]);
 
-    var yScale = d3.scale.linear()
-                   .domain([0, d3.max(dataset, function(d) {
-                     return d.Value;
-                   })])
-                   .range([0,h]);
-    var key = function(d) {
-      return d.Date;
-    };
+        var y = d3.scale.linear()
+            .domain([0, d3.max(data, function(d) { return d.Value; })])
+            .range([h - margin.top - margin.bottom, 0]);
 
-    var svg = d3.select("#chart")
-                .append("svg")
-                .attr("width", w)
-                .attr("height", h);
+        var xAxis = d3.svg.axis()
+            .scale(x)
+            .orient('bottom')
+            .ticks(d3.time.weeks)
+            .tickPadding(8);
 
-    svg.selectAll("rect")
-       .data(dataset)
-       .enter()
-       .append("rect")
-       .attr("x", function (d, i) {
-         return xScale(i);
-       })
-       .attr("y", function(d) {
-         return h - yScale(d.Value);
-       })
-       .attr("width", xScale.rangeBand())
-       .attr("height", function(d) {
-         return yScale(d.Value);
-       })
-       .attr("fill", "teal");
+        var yAxis = d3.svg.axis()
+            .scale(y)
+            .orient('left')
+            .tickPadding(8);
 
-    svg.selectAll("text")
-       .data(dataset)
-       .enter()
-       .append("text")
-       .text(function(d) {
-         return d.Value;
-       })
-       .attr("text-anchor", "middle")
-       .attr("x", function (d, i) {
-         return xScale(i) + xScale.rangeBand() / 2;
-       })
-       .attr("y", function (d) {
-         return h - yScale(d.Value) + 14;
-       })
-       .attr("font-family", "sans-serif")
-       .attr("font-size", "11px")
-       .attr("fill", "white");
+        var svg = d3.select('#chart').append('svg')
+            .attr('class', 'chart')
+            .attr('width', w)
+            .attr('height', h)
+          .append('g')
+            .attr('transform', 'translate(' + margin.left + ', ' + margin.top + ')');
+
+        svg.selectAll('.chart')
+            .data(data)
+          .enter().append('rect')
+            .attr('class', 'bar')
+            .attr('x', function(d) {
+                return x(new Date(d.Date));
+            })
+            .attr('y', function(d) {
+                return h - margin.top - margin.bottom - (h - margin.top - margin.bottom - y(d.Value));
+            })
+            .attr('width', 10)
+            .attr('height', function(d) {
+                return h - margin.top - margin.bottom - y(d.Value);
+            });
+
+        svg.append('g')
+            .attr('class', 'x axis')
+            .attr('transform', 'translate(0, ' + (h - margin.top - margin.bottom) + ')')
+            .call(xAxis);
+
+        svg.append('g')
+          .attr('class', 'y axis')
+          .call(yAxis);
 
   });
 });
