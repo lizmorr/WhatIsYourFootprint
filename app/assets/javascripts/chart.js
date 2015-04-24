@@ -47,8 +47,8 @@ $(function() {
         .data(dataset)
         .enter()
         .append("rect")
-        .attr("x", function (d, i) {
-          return xScale(i) + xScale(Date(d.time));
+        .attr("x", function (d) {
+          return d.Date;
         })
         .attr("y", function(d) {
           return h - yScale(d.Value);
