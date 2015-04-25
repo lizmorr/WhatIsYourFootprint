@@ -2,6 +2,8 @@ class UsagesController < ApplicationController
   before_action :authenticate_user
 
   def index
+    @begin_emissions = params[:begin_emissions] || 30.days.ago
+    @end_emissions = params[:end_emissions] || Date.today
     respond_to do |format|
       format.html do
         @usages = Usage.user_usage(current_user).page(params[:page])
@@ -11,8 +13,8 @@ class UsagesController < ApplicationController
       format.json do
         render json: Usage.daily_emissions_summary(
           current_user,
-          30.days.ago,
-          Date.today
+          @begin_emissions,
+          @end_emissions
         ).to_json
       end
     end
