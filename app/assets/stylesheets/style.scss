@@ -2,6 +2,10 @@
 
 $font-family-cursive: "Lobster Two", cursive;
 
+.row {
+  margin-bottom: 1em;
+}
+
 .top-bar {
   margin-bottom: 1em;
   font-size: 1em;
@@ -24,4 +28,9 @@ $font-family-cursive: "Lobster Two", cursive;
 ul#errors {
   background-color: $warning-color;
   padding: 0.5em;
+}
+
+.footprint-header {
+  font-family: $font-family-cursive;
+  font-size: 4em;
 }

@@ -17,9 +17,9 @@ $(function() {
       function draw(emissionsSummary) {
           var data = emissionsSummary.Data;
 
-          var margin = {top: 40, right: 30, bottom: 10, left: 50},
-              w = 600,
-              h = 500;
+          var margin = {top: 40, right: 40, bottom: 40, left: 40},
+              w = 720,
+              h = 520;
 
           var printDate = d3.time.format("%m/%d");
           var printMonth = d3.time.format("%B");
