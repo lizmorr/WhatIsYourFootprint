@@ -1,17 +1,18 @@
 <div class="row">
-  <h2>All Sources</h2>
-  <% if @carbon_sources %>
-    <div class="row" id="admin-carbon-index">
-      <ul>
-        <% @carbon_sources.each do |carbon_source| %>
-          <h2 class="subheader"><%= "#{carbon_source.name}" %></h2>
-          <ul>
-            <li>
-              Conversion: <%= "#{carbon_source.conversion_factor} #{carbon_source.conversion_units}" %>
-            </li>
-          </ul>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <div class="small-12 text-center columns">
+    <h2>All Sources</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class = "small-8 small-centered columns">
+    <% if @carbon_sources %>
+      <% @carbon_sources.each do |carbon_source| %>
+        <div class="panel">
+          <h3><%= "#{carbon_source.name}" %></h2>
+          Conversion: <%= "#{carbon_source.conversion_factor} #{carbon_source.conversion_units}" %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>
