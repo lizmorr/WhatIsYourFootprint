@@ -1,11 +1,11 @@
 $(function() {
-    var emissionsSummary = '/usages.json';
+    var emissionsSummary = "/usages.json";
     if($("#chart").length > 0) {
       $.ajax({
         type: "GET",
         contentType: "application/json; charset=utf-8",
         url: emissionsSummary + window.location.search,
-        dataType: 'json',
+        dataType: "json",
         success: function (data) {
           draw(data);
         },
@@ -58,47 +58,47 @@ $(function() {
 
           var xAxis = d3.svg.axis()
               .scale(x)
-              .orient('bottom')
+              .orient("bottom")
               .ticks(dateTicksType)
               .tickFormat(dateLabelFormat)
               .tickPadding(8);
 
           var yAxis = d3.svg.axis()
               .scale(y)
-              .orient('left')
+              .orient("left")
               .tickPadding(8);
 
-          var svg = d3.select('#chart').append('svg')
-              .attr('class', 'chart')
-              .attr('width', w)
-              .attr('height', h)
-            .append('g')
-              .attr('transform', 'translate(' + margin.left + ', ' + margin.top + ')');
+          var svg = d3.select("#chart").append("svg")
+              .attr("class", "chart")
+              .attr("width", w)
+              .attr("height", h)
+            .append("g")
+              .attr("transform", "translate(" + margin.left + ", " + margin.top + ")");
 
-          svg.selectAll('.chart')
+          svg.selectAll(".chart")
               .data(data)
-            .enter().append('rect')
-              .attr('class', 'bar')
-              .attr('x', function(d) {
+            .enter().append("rect")
+              .attr("class", "bar")
+              .attr("x", function(d) {
                   return x(new Date(d.Date));
               })
-              .attr('y', function(d) {
+              .attr("y", function(d) {
                   return h - margin.top - margin.bottom - (h - margin.top - margin.bottom - y(d.Value));
               })
-              .attr('width', function(d) {
+              .attr("width", function(d) {
                 return ((w - margin.left - margin.right) / data.length) - barPadding;
               })
-              .attr('height', function(d) {
+              .attr("height", function(d) {
                   return h - margin.top - margin.bottom - y(d.Value);
               });
 
-          svg.append('g')
-             .attr('class', 'x axis')
-             .attr('transform', 'translate(0, ' + (h - margin.top - margin.bottom) + ')')
+          svg.append("g")
+             .attr("class", "x axis")
+             .attr("transform", "translate(0, " + (h - margin.top - margin.bottom) + ")")
              .call(xAxis);
 
-          svg.append('g')
-             .attr('class', 'y axis')
+          svg.append("g")
+             .attr("class", "y axis")
              .call(yAxis);
 
           svg.append("text")
