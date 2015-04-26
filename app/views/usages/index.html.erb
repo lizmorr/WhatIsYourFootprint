@@ -36,7 +36,7 @@
                 </span></h5>
                 <h6><small>
                   <%= link_to "Edit this entry", edit_usage_path(usage) %>
-                  <%= link_to "Delete this entry", usage_path(usage), method: :delete %>
+                  <%= link_to "Delete this entry", usage_path(usage), method: :delete, data: { confirm: "Are you sure you want to delete?" } %>
                 </small></h6>
               </div>
             </li>
