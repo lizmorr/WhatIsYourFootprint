@@ -102,7 +102,7 @@ $(function() {
              .call(yAxis);
 
           svg.append("text")
-             .attr("class", "title")
+             .attr("class", "chart-title")
              .attr("x", (w / 2))
              .attr("y", 0 - (margin.top / 2))
              .attr("text-anchor", "middle")
