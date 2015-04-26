@@ -9,8 +9,18 @@
     <% if @carbon_sources %>
       <% @carbon_sources.each do |carbon_source| %>
         <div class="panel">
-          <h3><%= "#{carbon_source.name}" %></h2>
-          Conversion: <%= "#{carbon_source.conversion_factor} #{carbon_source.conversion_units}" %>
+          <h3><%= "#{carbon_source.name}" %></h3>
+          <h5>Conversion:
+            <span class="subheader">
+              <%= "#{carbon_source.conversion_factor} #{carbon_source.conversion_units}" %>
+            </span>
+          </h5>
+
+          <h5>Source:
+            <span class="subheader">
+              <%= link_to carbon_source.citation, carbon_source.citation_url %>
+            </span>
+          </h5>
         </div>
       <% end %>
     <% end %>
