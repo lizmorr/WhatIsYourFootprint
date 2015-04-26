@@ -33,7 +33,7 @@ class Usage < ActiveRecord::Base
   end
 
   def display_emission
-    "#{emission} lbs CO2"
+    "#{emission.round(2)} lbs CO2"
   end
 
   def category
@@ -60,7 +60,7 @@ class Usage < ActiveRecord::Base
     usages = Usage.user_usage(user)
     total_emissions = 0
     usages.each { |usage| total_emissions += usage.emission }
-    total_emissions
+    total_emissions.round(2)
   end
 
   def self.usages_by_date(user, date)
