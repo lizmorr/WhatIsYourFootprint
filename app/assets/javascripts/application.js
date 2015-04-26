@@ -22,9 +22,9 @@ $(function(){
   $('#usage_start_date').datepicker();
   $('#usage_end_date').datepicker();
   $('#begin_emissions').datepicker({
-    dateFormat: "yy-mm-dd"
+    dateFormat: 'yy-mm-dd'
   });
   $('#end_emissions').datepicker({
-    dateFormat: "yy-mm-dd"
+    dateFormat: 'yy-mm-dd'
   });
 });

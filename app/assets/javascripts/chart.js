@@ -1,9 +1,9 @@
 $(function() {
     var emissionsSummary = '/usages.json';
-    if($("#chart").length > 0) {
+    if($('#chart').length > 0) {
       $.ajax({
-        type: "GET",
-        contentType: "application/json; charset=utf-8",
+        type: 'GET',
+        contentType: 'application/json; charset=utf-8',
         url: emissionsSummary + window.location.search,
         dataType: 'json',
         success: function (data) {
@@ -21,8 +21,8 @@ $(function() {
               w = 720,
               h = 520;
 
-          var printDate = d3.time.format("%m/%d");
-          var printMonth = d3.time.format("%B");
+          var printDate = d3.time.format('%m/%d');
+          var printMonth = d3.time.format('%B');
 
           var barPadding = 1;
 
@@ -33,8 +33,6 @@ $(function() {
           var maxDate = d3.max(data, function(d) {
             return d.Date;
           });
-
-          console.log(minDate + " - " + maxDate);
 
           if (data.length <= 15) {
             var dateTicksType = d3.time.days;
@@ -101,12 +99,12 @@ $(function() {
              .attr('class', 'y axis')
              .call(yAxis);
 
-          svg.append("text")
-             .attr("class", "title")
-             .attr("x", (w / 2))
-             .attr("y", 0 - (margin.top / 2))
-             .attr("text-anchor", "middle")
-             .text("Daily Emissions from " + minDate + " - " + maxDate);
+          svg.append'(text')
+             .attr('class', 'title')
+             .attr('x', (w / 2))
+             .attr('y', 0 - (margin.top / 2))
+             .attr('text-anchor', 'middle')
+             .text('Daily Emissions from ' + minDate + ' - ' + maxDate);
 
     };
   }
