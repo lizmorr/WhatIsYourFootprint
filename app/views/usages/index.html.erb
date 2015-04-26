@@ -43,12 +43,15 @@
             <% end  %>
           </ul>
         <% end %>
-
-        <%= paginate @usages %>
+        <div class="row">
+          <div class = "small-12 text-center columns">
+            <%= paginate @usages %>
+          </div>
+        </div>
       </div>
     </div>
     <div class="row">
-      <div class="small-12 columns">
+      <div class="small-12 text-center columns sources-link">
         <%= link_to "Sources to track", carbon_sources_path %>
       </div>
     </div>
