@@ -38,7 +38,7 @@ module Admin
 
     def carbon_source_params
       params.require(:carbon_source).permit(:name, :conversion_factor,
-        :units, :category, :subcategory)
+        :units, :category, :subcategory, :citation, :citation_url)
     end
   end
 end
