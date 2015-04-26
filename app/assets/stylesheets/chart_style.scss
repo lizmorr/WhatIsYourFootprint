@@ -8,11 +8,15 @@
     shape-rendering: crispEdges;
   }
   text {
-    font-family: $font-family-sans-serif;
-    font-size: 1em;
+    font-size: .75em;
   }
 }
 
 .bar {
   fill: $secondary-color;
+}
+
+text.chart-title {
+  font-size: 1.5em;
+  text-decoration: underline;
 }
