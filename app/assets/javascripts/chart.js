@@ -17,7 +17,7 @@ $(function() {
       function draw(emissionsSummary) {
           var data = emissionsSummary.Data;
 
-          var margin = {top: 40, right: 40, bottom: 40, left: 40},
+          var margin = {top: 40, right: 40, bottom: 40, left: 60},
               w = 720,
               h = 520;
 
@@ -105,8 +105,24 @@ $(function() {
              .attr("class", "chart-title")
              .attr("x", (w / 2))
              .attr("y", 0 - (margin.top / 2))
-             .attr("text-anchor", "middle")
+             .style("text-anchor", "middle")
              .text("Daily Emissions from " + minDate + " - " + maxDate);
+
+          svg.append("text")
+             .attr("class", "chart-label")
+             .attr("x", w - margin.left - margin.right)
+             .attr("y", (h - margin.bottom))
+             .style("text-anchor", "middle")
+             .text("Date");
+
+          svg.append("text")
+             .attr("class", "chart-label")
+             .attr("transform", "rotate(-90)")
+             .attr("y", 0 - margin.left)
+             .attr("x", 0 - margin.top)
+             .attr("dy", "1em")
+             .style("text-anchor", "middle")
+             .text("pounds CO2");
 
     };
   }
