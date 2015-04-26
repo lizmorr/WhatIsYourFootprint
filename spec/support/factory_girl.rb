@@ -15,6 +15,8 @@ FactoryGirl.define do
     sequence(:name) { |n| "Heating oil #{n}" }
     conversion_factor 22
     units 'gallons'
+    citation "EPA"
+    citation_url "http://epa.gov/climatechange/ghgemissions/ind-assumptions.html"
   end
 
   factory :use_reason do

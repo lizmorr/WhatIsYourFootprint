@@ -20,6 +20,18 @@
 
   <div class="row">
     <div class="small-12 columns">
+      <%= f.label :citation %>
+      <%= f.text_field :citation %>
+    </div>
+
+    <div class="small-12 columns">
+      <%= f.label :citation_url, "Citation URL" %>
+      <%= f.text_field :citation_url, placeholder: "http://" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
       <%= f.submit "Add new source", class: "button secondary" %>
     </div>
   </div>

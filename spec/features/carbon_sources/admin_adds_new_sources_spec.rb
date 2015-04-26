@@ -15,6 +15,8 @@ feature 'admin adds new carbon sources', %{
     fill_in 'Name', with: "Heating oil"
     fill_in 'Conversion factor', with: 0.010213
     fill_in 'Units', with: 'gallons'
+    fill_in 'Citation', with: "EPA"
+    fill_in 'Citation URL', with: "http://epa.gov/climatechange/ghgemissions/ind-assumptions.html"
 
     click_on 'Add new source'
 

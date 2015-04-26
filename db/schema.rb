@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150422213357) do
+ActiveRecord::Schema.define(version: 20150426184817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20150422213357) do
     t.string "name",              null: false
     t.float  "conversion_factor", null: false
     t.string "units",             null: false
+    t.string "citation"
+    t.string "citation_url"
   end
 
   add_index "carbon_sources", ["name"], name: "index_carbon_sources_on_name", unique: true, using: :btree
