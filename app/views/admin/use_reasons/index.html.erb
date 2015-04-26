@@ -10,7 +10,7 @@
     <h2>Use Reasons</h2>
     <% if @use_reasons %>
       <% @use_reasons.each do |reason| %>
-        <div class="panel hide-for-small">
+        <div class="panel">
           <h3><%= reason.name %></h3>
           <h6><small>
             <%= link_to "Edit #{reason.name}", edit_admin_use_reason_path(reason) %>
