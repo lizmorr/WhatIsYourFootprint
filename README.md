@@ -2,31 +2,15 @@
 [![Code Climate](https://codeclimate.com/github/lizmorr/WhatIsYourFootprint.png)](https://codeclimate.com/github/lizmorr/WhatIsYourFootprint)
 [![Coverage Status](https://coveralls.io/repos/lizmorr/WhatIsYourFootprint/badge.png)](https://coveralls.io/r/lizmorr/WhatIsYourFootprint)
 
-== README
+# [What's Your Footprint?](http://whatsyourfootprint.herokuapp.com/)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A web app where users enter their energy usage which is then converted into pounds of
+CO<sub>2</sub> emitted. This is done based on conversion factors for different sources
+that are be added by an admin user.
 
-Things you may want to cover:
+### The web app can be logged into with the following credentials:
+Email: test@test.com
+PW: password
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+## ER Diagram
+![ER Diagram for app](http://i.imgur.com/N5fZZ7S.png)
