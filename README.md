@@ -13,4 +13,4 @@ Email: test@test.com
 PW: password
 
 ## ER Diagram
-![ER Diagram for app](http://i.imgur.com/N5fZZ7S.png)
+![ER Diagram for app](http://i.imgur.com/3w4PLWk.png)
