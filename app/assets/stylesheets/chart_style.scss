@@ -16,6 +16,10 @@
   fill: $secondary-color;
 }
 
+.bar.highlight {
+  fill: darken($secondary-color, 25%);
+}
+
 text.chart-title {
   font-size: 1.5em;
   text-decoration: underline;
@@ -23,4 +27,18 @@ text.chart-title {
 
 text.chart-label {
   font-style: italic;
+}
+
+.tooltip {
+  background: lighten($primary-color, 50%);
+  box-shadow: 0 0 0.1em darken($primary-color, 25%);
+  display: none;
+  font-size: 12px;
+  left: 130px;
+  padding: 10px;
+  position: absolute;
+  text-align: center;
+  top: 95px;
+  width: 80px;
+  z-index: 10;
 }

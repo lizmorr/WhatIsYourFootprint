@@ -68,6 +68,13 @@ $(function() {
               .orient("left")
               .tickPadding(8);
 
+          var tooltip = d3.select('#chart')            
+            .append('div')                             
+            .attr('class', 'tooltip');                 
+
+          tooltip.append('div')                        
+            .attr('class', 'emissions');                   
+
           var svg = d3.select("#chart").append("svg")
               .attr("class", "chart")
               .attr("width", w)
@@ -90,6 +97,15 @@ $(function() {
               })
               .attr("height", function(d) {
                   return h - margin.top - margin.bottom - y(d.Value);
+              })
+              .on("mouseover", function (d){
+                d3.select(this).classed("highlight", true);
+                tooltip.select('.emissions').html(d.Value.toFixed(2) + " lbs CO<sub>2</sub>");
+                tooltip.style('display', 'block');
+              })
+              .on("mouseout", function() {
+                d3.select(this).classed("highlight", false);
+                tooltip.style('display', 'none');
               });
 
           svg.append("g")
