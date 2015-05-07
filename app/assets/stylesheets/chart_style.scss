@@ -31,14 +31,11 @@ text.chart-label {
 
 .tooltip {
   background: lighten($primary-color, 50%);
-  box-shadow: 0 0 0.1em darken($primary-color, 25%);
   display: none;
-  font-size: 12px;
-  left: 130px;
-  padding: 10px;
+  font-size: .5em;
   position: absolute;
+  left: 1em;
   text-align: center;
-  top: 95px;
-  width: 80px;
+  top: 10em;
   z-index: 10;
 }

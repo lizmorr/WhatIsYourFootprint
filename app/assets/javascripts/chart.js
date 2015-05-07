@@ -100,7 +100,7 @@ $(function() {
               })
               .on("mouseover", function (d){
                 d3.select(this).classed("highlight", true);
-                tooltip.select('.emissions').html(d.Value.toFixed(2) + " lbs CO<sub>2</sub>");
+                tooltip.select('.emissions').html(d.Date + ": " + d.Value.toFixed(2) + " lbs CO<sub>2</sub>");
                 tooltip.style('display', 'block');
               })
               .on("mouseout", function() {
