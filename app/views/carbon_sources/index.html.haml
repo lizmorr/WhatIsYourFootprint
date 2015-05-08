@@ -1,0 +1,17 @@
+.row
+  .small-12.text-center.columns
+    %h2 All Sources
+
+.row
+  .small-8.small-centered.columns
+    - if @carbon_sources
+      - @carbon_sources.each do |carbon_source|
+        .panel
+          %h3= carbon_source.name
+          %h5 Conversion:
+          %span.subheader
+            = "#{carbon_source.conversion_factor} #{carbon_source.conversion_units}"
+
+          %h5 Source:
+          %span.subheader
+            = link_to carbon_source.citation, carbon_source.citation_url, target: "_blank"
