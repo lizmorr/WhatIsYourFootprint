@@ -1,36 +1,36 @@
 !!!
 %html
-%head
-  %title CarbonFootprint
-  = stylesheet_link_tag 'application', media: 'all'
-  = csrf_meta_tags 
+  %head
+    %title CarbonFootprint
+    = stylesheet_link_tag 'application', media: 'all'
+    = csrf_meta_tags 
 
-%body
+  %body
 
-  %nav.top-bar{"data-topbar"=> "", "role"=> "navigation"}
-    %ul.title-area
-      %li.name
-        %h1= link_to "What's Your Footprint?", root_path
+    %nav.top-bar{"data-topbar"=> "", "role"=> "navigation"}
+      %ul.title-area
+        %li.name
+          %h1= link_to "What's Your Footprint?", root_path
 
-    %section.top-bar-section
-      %ul.right
-        %li.has-dropdown
-          - if current_user.try(:admin?)
-            %a{href: "#"} Admin
-            %ul.dropdown
-              %li= link_to "Carbon Sources", admin_carbon_sources_path
-              %li= link_to "Use Reasons", admin_use_reasons_path
-        - if current_user
-          %li= link_to 'Sign Out', destroy_user_session_path, method: :delete
-        - else
-          %li= link_to 'Sign Up', new_user_registration_path
-          %li= link_to 'Sign In', new_user_session_path
+      %section.top-bar-section
+        %ul.right
+          %li.has-dropdown
+            - if current_user.try(:admin?)
+              %a{href: "#"} Admin
+              %ul.dropdown
+                %li= link_to "Carbon Sources", admin_carbon_sources_path
+                %li= link_to "Use Reasons", admin_use_reasons_path
+          - if current_user
+            %li= link_to 'Sign Out', destroy_user_session_path, method: :delete
+          - else
+            %li= link_to 'Sign Up', new_user_registration_path
+            %li= link_to 'Sign In', new_user_session_path
 
-  - flash.each do |key, value|
-    %div.alert-box.secondary{"data-alert"=> ""}
-      = value
+    - flash.each do |key, value|
+      %div.alert-box.secondary{"data-alert"=> ""}
+        = value
 
-  = yield
+    = yield
 
-  = javascript_include_tag 'application'
-  = yield :extra_footer
+    = javascript_include_tag 'application'
+    = yield :extra_footer
