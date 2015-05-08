@@ -1,0 +1,27 @@
+= form_for [:admin, @carbon_source] do |f| 
+  .row
+    .small-12.columns
+      = f.label :name
+      = f.text_field :name
+
+  .row
+    .small-6.columns
+      = f.label :conversion_factor
+      = f.text_field :conversion_factor
+
+    .small-6.columns
+      = f.label :units
+      = f.text_field :units
+
+  .row
+    .small-12.columns
+      = f.label :citation
+      = f.text_field :citation
+
+    .small-12.columns
+      = f.label :citation_url, "Citation URL"
+      = f.text_field :citation_url, placeholder: "http://"
+
+  .row
+    .small-12.columns
+      = f.submit "Add new source", class: "button secondary"
