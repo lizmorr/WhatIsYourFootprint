@@ -1,0 +1,58 @@
+= render 'shared/errors' if @errors
+
+.row
+  .small-8.small-centered.columns
+    = image_tag "grassandtree.jpg", alt:"Pretty outside image"
+    %hr
+
+.row
+  .small-4.columns
+    %h4 What are emissions?
+    %p 
+      Carbon emission refers to the carbon dioxide that is released into the 
+      atmosphere when fossil fuels are burned. Fossil fuels with higher 
+      carbon content will have higher emissions. Carbon emissions are a driver 
+      of climate change.
+    %hr
+
+    %h4 Want to learn more?
+    %ul
+      %li= link_to "EPA information on emissions",
+        "http://www.epa.gov/climatechange/ghgemissions/",
+        target: "_blank"
+      %li= link_to "What is a carbon footprint?",
+        "http://en.wikipedia.org/wiki/Carbon_footprint",
+        target: "_blank"
+
+  .small-4.columns
+    %h4 Why track?
+    %p 
+      Tracking your personal emissions (your carbon footprint) can give you insight 
+      into how your actions may have an impact on the environment. There are two kinds 
+      of emissions to track: direct and indirect.
+    
+    %p
+      %em Direct emissions 
+      are emissions created by sources you own or control. For an individual, 
+      this would be your car or heating your house.
+    
+    %p
+      %em Indirect emissions
+      are emissions created by someone else on your behalf. Emissions that 
+      would fall into this are the emissions created by electricity 
+      generation or the production of goods made. For the purposes of tracking 
+      here, we consider emissions related to the purchase of electricity.
+
+  .small-4.columns
+    %h4 What's Your Footprint
+    %h5= link_to "What we track", carbon_sources_path
+    %p
+      Once you are registered, you can enter your usage for the different sources
+      of emissions you are responsible for. Information can come from your electric,
+      gas, or oil bills. Information will also come from how much gas you use in your
+      car.
+    %p
+      When you have new information, log in and click on new personal usage. That's
+      where you enter your energy usage. Those emissions will be added to your personal
+      total!
+  %hr

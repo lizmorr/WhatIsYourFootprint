@@ -1,0 +1,7 @@
+= form_for [:admin, @use_reason] do |f|
+  .row
+    .small-12.columns
+      = f.label :name
+      = f.text_field :name
+
+      = f.submit "Add new reason", class: "button secondary"

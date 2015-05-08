@@ -1,0 +1,21 @@
+= render 'shared/errors' if @errors
+
+.row
+  .small-4.columns
+    %h2 Add New Carbon Source
+    = render 'new'
+
+  .small-8.columns
+    %h2 All Sources
+    - if @carbon_sources 
+      - @carbon_sources.each do |carbon_source|
+        .panel
+          %h3= carbon_source.name
+          %h5 Conversion:
+          %span.subheader
+            = "#{carbon_source.conversion_factor} #{carbon_source.conversion_units}"
+          %h5 Source:
+          %span.subheader
+            = link_to "#{carbon_source.citation}", carbon_source.citation_url, target: "_blank"
+          %h6
+          %small= link_to "Edit #{carbon_source.name}", edit_admin_carbon_source_path(carbon_source)

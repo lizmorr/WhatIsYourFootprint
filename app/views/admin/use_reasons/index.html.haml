@@ -1,0 +1,15 @@
+= render 'shared/errors' if @errors
+
+.row
+  .small-4.columns
+    %h2 Add New Use Reason
+    = render 'new'
+
+  .small-8.columns
+    %h2 Use Reasons
+    - if @use_reasons
+      - @use_reasons.each do |reason|
+        .panel
+          %h3= reason.name
+          %h6
+          %small= link_to "Edit #{reason.name}", edit_admin_use_reason_path(reason)
