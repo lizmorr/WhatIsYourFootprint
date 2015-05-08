@@ -1,0 +1,65 @@
+= rendor "share/errors" if @errors
+
+.row
+  .small-12.columns
+    %h1.text-center.footprint-header Your Carbon Footprint
+
+.row
+  .small-4.columns
+    .row
+      .small-12.text-center.columns
+        = link_to "Add personal usage", new_usage_path, class: "button info"
+
+    .row
+      .small-12.columns
+        %h3.text-center Entry Overview
+        - if @usages
+          %ul.accordion{"data-accordion"=> ""}
+            - @usages.each do |usage|
+              %li.accordion-navigation
+                = link_to "#panel_#{usage.id}", title: "Usage for time period" do
+                  %h5= "#{usage.display_time_period}:"
+                  %h5.subheader= usage.display_emission
+                %div.content#panel{id: usage.id}
+                  %h5 
+                    Source Info: 
+                    %span.subheader= usage.display_source_info_for_usage 
+                  %h5
+                    Use Reason: 
+                    %span.subheader= usage.category
+                  %h5
+                    Notes: 
+                    %span.subheader= usage.notes
+                  %h6
+                  %small
+                    = link_to "Edit this entry", edit_usage_path(usage)
+                    = link_to "Delete this entry", usage_path(usage), method: :delete, data: { confirm: "Are you sure you want to delete?" }
+        .row
+          .small-12.text-center.columns
+            = paginate @usages
+    .row
+      .small-12.text-center.columns.sources-link
+        = link_to "Sources to track", carbon_sources_path
+
+  .small-8.columns
+    .row
+      .small-12.columns
+        %h2 Total Emissions:
+        %h3.subheader= "#{@total_emissions} lbs CO2"
+        %hr
+
+    .row
+      .small-12.columns
+        #chart
+          = form_tag usages_path, method: :get do
+            .row
+              .small-4.columns
+                = label_tag :begin_emissions
+                = text_field_tag :begin_emissions
+
+              .small-4.columns
+                = label_tag :end_emissions
+                = text_field_tag :end_emissions
+
+              .small-4.columns
+                = submit_tag "Enter Time Frame", class: "button small success"

@@ -1,0 +1,39 @@
+= render "shared/errors" if @errors
+
+%h2 Edit Usage
+= form_for @usage do |f|
+  .row
+    .small-12.columns
+      = f.label :carbon_source_id, "Source"
+      = f.collection_select(:carbon_source_id,
+        CarbonSource.all, :id, :name_with_units,
+        include_blank: "Please choose a source")
+
+  .row
+    .small-6.columns
+      = f.label :amount_used
+      = f.text_field :amount_used
+
+    .small-6.columns
+      = f.label :use_reason_id, "Use reason"
+      = f.collection_select(:use_reason_id,
+        UseReason.all, :id, :name,
+        include_blank: "Please choose a use reason")
+
+  .row
+    .small-6.columns
+      = f.label :start_date
+      = f.text_field :start_date
+
+    .small-6.columns
+      = f.label :end_date
+      = f.text_field :end_date
+
+  .row
+    .small-12.columns
+      = f.label :notes
+      = f.text_area :notes
+
+  .row
+    .small-12.columns
+      = f.submit "Edit usage", class: "button secondary"
