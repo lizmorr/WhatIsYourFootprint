@@ -2,8 +2,12 @@ class UsagesController < ApplicationController
   before_action :authenticate_user
 
   def index
-    @begin_emissions = params[:begin_emissions] || 30.days.ago
-    @end_emissions = params[:end_emissions] || Date.today
+    if params[:begin_emissions] && params[:end_emissions]
+      session[:begin_emissions] = params[:begin_emissions]
+      session[:end_emissions] = params[:end_emissions]
+    end
+    @begin_emissions = session[:begin_emissions] || 30.days.ago
+    @end_emissions = session[:end_emissions] || Date.today
     respond_to do |format|
       format.html do
         @usages = Usage.user_usage(current_user).page(params[:page])
